@@ -1,0 +1,78 @@
+{
+	"users": [
+		{
+			"id": 0,
+			"login": "NikolayS",
+			"password": "qwerty123",
+			"role": 0
+		},
+		{
+			"id": 1,
+			"login": "IvanI",
+			"password": "12345678",
+			"role": 1
+		}
+	],
+	"roles": [
+		{ "id": 0, "name": "Администратор" },
+		{ "id": 1, "name": "Пользователь" },
+		{ "id": 2, "name": "Гость" }
+	],
+	"products": [
+		{
+			"id": 0,
+			"name": "Телевизор",
+			"category": 0,
+			"price": 119999,
+			"count": 45,
+			"image_url": "https://via.placeholder.com/800x640"
+		},
+		{
+			"id": 1,
+			"name": "Фотоаппарат",
+			"category": 1,
+			"price": 79999,
+			"count": 23,
+			"image_url": "https://via.placeholder.com/800x640"
+		},
+		{
+			"id": 2,
+			"name": "Ноутбук",
+			"category": 2,
+			"price": 159999,
+			"count": 12,
+			"image_url": "https://via.placeholder.com/800x640"
+		},
+		{
+			"id": 3,
+			"name": "Блендер",
+			"category": 3,
+			"price": 7999,
+			"count": 39,
+			"image_url": "https://via.placeholder.com/800x640"
+		},
+		{
+			"id": 4,
+			"name": "Смартфон",
+			"category": 4,
+			"price": 99999,
+			"count": 17,
+			"image_url": "https://via.placeholder.com/800x640"
+		},
+		{
+			"id": 5,
+			"name": "Видеокамера",
+			"category": 1,
+			"price": 112999,
+			"count": 8,
+			"image_url": "https://via.placeholder.com/800x640"
+		}
+	],
+	"categories": [
+		{ "id": 0, "name": "Телевизоры, видео" },
+		{ "id": 1, "name": "Фото и видео" },
+		{ "id": 2, "name": "Компьютеры и ноутбуки" },
+		{ "id": 3, "name": "Бытовая техника" },
+		{ "id": 4, "name": "Смартфоны и гаджеты" }
+	]
+}
