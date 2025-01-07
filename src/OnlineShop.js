@@ -1,16 +1,28 @@
 import React from "react";
-import "./App.css";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
+import { Header } from "./components";
+import "./App.css";
 
 const Content = styled.div`
-	padding: 120px 0 0 0;
+	padding: 120px 0;
 `;
 
 const H2 = styled.h2`
 	text-align: center;
 `;
-const Header = () => <div>Шапка</div>;
+
+const AppColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 1200px;
+	min-height: 100%;
+	background-color: #fff;
+	margin: 0 auto;
+`;
+
+const Footer = () => <div>Футер</div>;
 
 export const OnlineShop = () => {
 	return (
@@ -19,7 +31,7 @@ export const OnlineShop = () => {
 		// 	123
 		// 	<Div>123</Div>
 		// </div>
-		<div>
+		<AppColumn>
 			<Header></Header>
 			<Content>
 				<H2>Контент страницы</H2>
@@ -39,6 +51,7 @@ export const OnlineShop = () => {
 					<Route path="*" element={<div>Ошибка</div>} />
 				</Routes>
 			</Content>
-		</div>
+			<Footer></Footer>
+		</AppColumn>
 	);
 };
