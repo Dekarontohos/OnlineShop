@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import { Authorization } from "./pages";
+import { Authorization, Registration } from "./pages";
 import "./App.css";
 
 const Content = styled.div`
@@ -34,7 +34,7 @@ export const OnlineShop = () => {
 				<Routes>
 					<Route path="/" element={<div>Главная страницы</div>} />
 					<Route path="/login" element={<Authorization />} />
-					<Route path="/register" element={<div>Регистрация</div>} />
+					<Route path="/register" element={<Registration />} />
 					<Route
 						path="/products/:productId"
 						element={<div>Продукт</div>}
