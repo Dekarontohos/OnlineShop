@@ -1,4 +1,4 @@
-export const createuser = (login, password) => {
+export const createUser = (login, password) => {
 	fetch("http://localhost:3005/users", {
 		method: "post",
 		headers: { "Content-Type": "application/json;charset=utf-8" },

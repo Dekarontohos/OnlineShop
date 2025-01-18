@@ -1,8 +1,12 @@
 import { getUser } from "./get-user";
-import { createuser } from "./create-user";
-import { createSession } from "./create-session";
+import { createUser } from "./create-user";
+import { sessions } from "./sessions";
 
 export const server = {
+	async logout(session) {
+		sessions.remove(session);
+	},
+
 	async autorize(authLogin, authPassword) {
 		const user = await getUser(authLogin);
 
@@ -14,19 +18,17 @@ export const server = {
 			return { error: "Неверный пароль", response: null };
 		}
 
-		const session = {
-			logout() {
-				Object.keys(session).forEach((key) => {
-					delete session[key];
-				});
-			},
-		};
-
 		return {
 			error: null,
-			response: createSession(user.role),
+			response: {
+				session: sessions.create(user),
+				id: user.id,
+				login: user.login,
+				roleId: user.role,
+			},
 		};
 	},
+
 	async register(regLogin, regPassword) {
 		const user = await getUser(regLogin);
 
@@ -34,16 +36,16 @@ export const server = {
 			return { error: "Логин уже занят", response: null };
 		}
 
-		await createuser(regLogin, regPassword);
+		await createUser(regLogin, regPassword);
 
-		const session = {
-			logout() {
-				Object.keys(session).forEach((key) => {
-					delete session[key];
-				});
+		return {
+			error: null,
+			response: {
+				session: sessions.create(user),
+				id: user.id,
+				login: user.login,
+				roleId: user.role,
 			},
 		};
-
-		return { error: null, response: createSession(user.role) };
 	},
 };

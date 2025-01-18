@@ -2,14 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
+import { Authorization } from "./pages";
 import "./App.css";
 
 const Content = styled.div`
 	padding: 120px 0;
-`;
-
-const H2 = styled.h2`
-	text-align: center;
 `;
 
 const AppColumn = styled.div`
@@ -34,10 +31,9 @@ export const OnlineShop = () => {
 		<AppColumn>
 			<Header></Header>
 			<Content>
-				<H2>Контент страницы</H2>
 				<Routes>
 					<Route path="/" element={<div>Главная страницы</div>} />
-					<Route path="/login" element={<div>Авторизация</div>} />
+					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<div>Регистрация</div>} />
 					<Route
 						path="/products/:productId"

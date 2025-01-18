@@ -1,38 +1,66 @@
 import styled from "styled-components";
-import { Icon } from "../../../icon/icon";
+import { Icon, Button } from "../../../../components";
 import { Link } from "react-router-dom";
+import { ROLE } from "../../../../constants/role";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	selectUserRole,
+	selectUserLogin,
+	selectUserSession,
+} from "../../../../Redux/selectors";
+import { logout } from "../../../../actions";
 
 const RightsAligned = styled.div`
 	display: flex;
 	justify-content: flex-end;
-`;
-
-const StyledLink = styled(Link)`
-	display: flex;
-	justify-content: center;
 	align-items: center;
-	font-size: 18px;
-	width: 80px;
-	height: 28px;
-	border: 1px solid #000;
-	background-color: #eee;
-	border-radius: 5px;
-	&:hover {
-		background-color: #dcdcdc;
-	}
+	height: 34px;
+	width: 150px;
 `;
 
 const PanelIcon = styled(Link)`
+	transition:
+		transform 0.3s ease,
+		color 0.3s ease;
 	&:hover {
 		color: #5c5c5c;
 	}
 `;
 
+const UserName = styled.div`
+	font-size: 17px;
+	font-weight: bold;
+}
+`;
+
 const ControlPanelContainer = ({ className }) => {
+	const dispatch = useDispatch();
+	const roleId = useSelector(selectUserRole);
+	const login = useSelector(selectUserLogin);
+	const session = useSelector(selectUserSession);
+
 	return (
 		<div className={className}>
 			<RightsAligned>
-				<StyledLink to="/login">Войти</StyledLink>
+				{roleId === ROLE.GUEST ? (
+					<Button width="70px">
+						<Link to="/login">Войти</Link>
+					</Button>
+				) : (
+					<>
+						<UserName>{login}</UserName>
+						<PanelIcon>
+							<Icon
+								id="fa fa-sign-out"
+								margin="0 0 0 10px"
+								size="26px"
+								onClick={() => {
+									dispatch(logout(session));
+								}}
+							></Icon>
+						</PanelIcon>
+					</>
+				)}
 			</RightsAligned>
 			<RightsAligned>
 				<PanelIcon to="/productsManagment">
@@ -43,7 +71,11 @@ const ControlPanelContainer = ({ className }) => {
 					></Icon>
 				</PanelIcon>
 				<PanelIcon to="/basket">
-					<Icon id="fa-shopping-basket" margin="10px 0 0 16px"></Icon>
+					<Icon
+						id="fa-shopping-basket"
+						margin="6px 0 0 10px"
+						size="24px"
+					></Icon>
 				</PanelIcon>
 			</RightsAligned>
 		</div>
