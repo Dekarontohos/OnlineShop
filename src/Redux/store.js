@@ -5,6 +5,7 @@ import {
 	productReducer,
 	productsReducer,
 	userReducer,
+	productOnEditionReducer,
 } from "./reducers";
 
 const reducer = combineReducers({
@@ -12,6 +13,7 @@ const reducer = combineReducers({
 	user: userReducer,
 	product: productReducer,
 	products: productsReducer,
+	productOnEdition: productOnEditionReducer,
 });
 
 const composeEnhancers =

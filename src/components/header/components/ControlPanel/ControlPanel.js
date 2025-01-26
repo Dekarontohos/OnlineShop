@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Icon, Button } from "../../../../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROLE } from "../../../../constants/role";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,15 +18,6 @@ const RightsAligned = styled.div`
 	width: 150px;
 `;
 
-const PanelIcon = styled(Link)`
-	transition:
-		transform 0.3s ease,
-		color 0.3s ease;
-	&:hover {
-		color: #5c5c5c;
-	}
-`;
-
 const UserName = styled.div`
 	font-size: 17px;
 	font-weight: bold;
@@ -39,6 +30,8 @@ const ControlPanelContainer = ({ className }) => {
 	const login = useSelector(selectUserLogin);
 	const session = useSelector(selectUserSession);
 
+	const navigate = useNavigate();
+
 	return (
 		<div className={className}>
 			<RightsAligned>
@@ -49,34 +42,33 @@ const ControlPanelContainer = ({ className }) => {
 				) : (
 					<>
 						<UserName>{login}</UserName>
-						<PanelIcon>
-							<Icon
-								id="fa fa-sign-out"
-								margin="0 0 0 10px"
-								size="26px"
-								onClick={() => {
-									dispatch(logout(session));
-								}}
-							></Icon>
-						</PanelIcon>
+						<Icon
+							id="fa fa-sign-out"
+							margin="0 0 0 10px"
+							size="26px"
+							onClick={() => {
+								dispatch(logout(session));
+								navigate("/login");
+							}}
+						></Icon>
 					</>
 				)}
 			</RightsAligned>
 			<RightsAligned>
-				<PanelIcon to="/productsManagment">
+				<Link to="/productsManagment">
 					<Icon
 						id="fa-th-list"
 						margin="10px 0 0 0"
 						size="26px"
 					></Icon>
-				</PanelIcon>
-				<PanelIcon to="/basket">
+				</Link>
+				<Link to="/basket">
 					<Icon
 						id="fa-shopping-basket"
 						margin="6px 0 0 10px"
 						size="24px"
 					></Icon>
-				</PanelIcon>
+				</Link>
 			</RightsAligned>
 		</div>
 	);

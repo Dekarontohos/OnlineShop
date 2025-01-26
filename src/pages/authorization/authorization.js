@@ -114,10 +114,13 @@ export const Authorization = styled(AuthorizationContainer)`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	justify-content: center;
+	height: calc(100vh - 240px);
 
 	& > form {
 		display: flex;
 		flex-direction: column;
 		width: 260px;
+		height: 200px;
 	}
 `;
