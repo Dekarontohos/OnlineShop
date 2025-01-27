@@ -16,7 +16,7 @@ export const TableRow = styled(TableRowContainer)`
 	padding: 10px;
 	border: 2px solid #000;
 	background-color: #eee;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 
 	& .id-column {
 		width: 80px;

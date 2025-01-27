@@ -1,77 +1,87 @@
 import styled from "styled-components";
 import { Button, H2, Input, Label, Select } from "../../../../components";
-import { useDispatch, useSelector } from "react-redux";
-import { forwardRef, useEffect, useState } from "react";
-import { selectEditingProduct } from "../../../../Redux/selectors";
+import { useDispatch } from "react-redux";
+import { forwardRef, useEffect, useMemo } from "react";
 import { setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
+import { useLocation } from "react-router-dom";
 
 const EditingBlockContainer = forwardRef(
-	({ className, categories, setProducts }, ref) => {
+	(
+		{
+			className,
+			categories,
+			setProducts,
+			product,
+			productState,
+			setProductState,
+			clearEditingProduct,
+		},
+		ref,
+	) => {
 		const dispatch = useDispatch();
 		const requestServer = useServerRequest();
+		const location = useLocation();
 
-		const [productName, setProductName] = useState("");
-		const [productCategory, setProductCategory] = useState(0);
-		const [productPrice, setProductPrice] = useState(0);
-		const [productCount, setProductCount] = useState(0);
-		const [productImage, setroductImage] = useState("");
+		const shouldUpdateProductState = useMemo(() => {
+			return (
+				product.id &&
+				product.id !== productState.id &&
+				(product.name !== productState.name ||
+					product.category !== productState.category ||
+					product.price !== productState.price ||
+					product.count !== productState.count ||
+					product.image_url !== productState.image_url)
+			);
+		}, [product, productState]);
 
-		const product = useSelector(selectEditingProduct);
-		console.log(product);
-		let productState = product.id
-			? product
-			: {
-					name: productName,
-					category: productCategory,
-					price: productPrice,
-					count: productCount,
-					image_url: productImage,
-				};
-
-		console.log(productState);
+		useEffect(() => {
+			if (shouldUpdateProductState) {
+				setProductState(product);
+			}
+		}, [shouldUpdateProductState, product, setProductState]);
 
 		useEffect(() => {
 			if (product) {
 				dispatch(setEditingProduct(product));
 			}
-		}, []);
+		}, [dispatch]);
+
+		useEffect(() => {
+			clearEditingProduct();
+		}, [location.pathname, clearEditingProduct]);
 
 		const handleChange = (event) => {
 			const { name, value } = event.target;
 			switch (name) {
 				case "name":
-					setProductName(value);
+					setProductState({ ...productState, name: value });
 					break;
 				case "category":
-					setProductCategory(Number(value));
+					setProductState({
+						...productState,
+						category: Number(value),
+					});
 					break;
 				case "price":
-					setProductPrice(Number(value));
+					setProductState({ ...productState, price: Number(value) });
 					break;
 				case "count":
-					setProductCount(Number(value));
+					setProductState({ ...productState, count: Number(value) });
 					break;
 				case "image_url":
-					setroductImage(value);
+					setProductState({ ...productState, image_url: value });
 					break;
 				default:
 					break;
 			}
-			productState = {
-				name: productName,
-				category: productCategory,
-				price: productPrice,
-				count: productCount,
-				image_url: productImage,
-			};
 		};
 
-		const CreateProduct = () => {
-			if (!productName || !productImage) {
+		const createProduct = () => {
+			if (!productState.name || !productState.image_url) {
 				alert("Необходимо заполнить данные.");
 				return;
-			} else if (productPrice === 0) {
+			} else if (productState.price === 0) {
 				alert("Цена не может быть нулевой.");
 				return;
 			}
@@ -85,11 +95,11 @@ const EditingBlockContainer = forwardRef(
 			});
 		};
 
-		const UpdateProduct = () => {
-			if (!productName || !productImage) {
+		const updateProduct = () => {
+			if (!productState.name || !productState.image_url) {
 				alert("Необходимо заполнить данные.");
 				return;
-			} else if (productPrice === 0) {
+			} else if (productState.price === 0) {
 				alert("Цена не может быть нулевой.");
 				return;
 			}
@@ -101,6 +111,7 @@ const EditingBlockContainer = forwardRef(
 					setProducts(result.response);
 				});
 			});
+			clearEditingProduct();
 		};
 
 		return (
@@ -179,7 +190,7 @@ const EditingBlockContainer = forwardRef(
 								fontSize={"20px;"}
 								height={"50px;"}
 								margin={"20px 0;"}
-								onClick={UpdateProduct}
+								onClick={updateProduct}
 							>
 								<span>Сохранить</span> <br></br>
 								<span>изменения</span>
@@ -190,7 +201,7 @@ const EditingBlockContainer = forwardRef(
 								fontSize={"20px;"}
 								height={"50px;"}
 								margin={"20px 0;"}
-								onClick={CreateProduct}
+								onClick={createProduct}
 							>
 								<span>Добавить</span> <br></br>
 								<span>товар</span>

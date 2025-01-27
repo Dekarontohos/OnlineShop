@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Icon } from "../../../../components";
 import { useDispatch } from "react-redux";
 import { setEditingProduct } from "../../../../actions";
+import { useServerRequest } from "../../../../hooks";
 
 const mainStyles = `
 
@@ -24,15 +25,38 @@ const ProductTableRowContainer = ({
 	count,
 	image_url,
 	categories,
+	product,
+	setProducts,
+	clearEditingProduct,
 }) => {
 	const dispatch = useDispatch();
+	const requestServer = useServerRequest();
 
 	const editOnClick = (product) => {
 		dispatch(setEditingProduct(product));
 	};
 
+	const deleteOnClick = (id) => {
+		requestServer("removeProduct", id).then((result) => {
+			if (result.response === "success") {
+				alert("Продукт удалён.");
+			}
+			requestServer("fetchProducts").then((result) => {
+				setProducts(result.response);
+			});
+		});
+		if (id === product.id) {
+			clearEditingProduct();
+		}
+	};
+
 	return (
-		<div className={className}>
+		<div
+			className={className}
+			style={{
+				backgroundColor: id === product.id ? "lightgrey" : "",
+			}}
+		>
 			<div className="id-column">{id}</div>
 			<div className="name-column">{name}</div>
 			<div className="category-column">
@@ -62,7 +86,12 @@ const ProductTableRowContainer = ({
 						})
 					}
 				></Icon>
-				<Icon id="fa fa-trash-o" margin="0 0 0 10px" size="26px"></Icon>
+				<Icon
+					id="fa fa-trash-o"
+					margin="0 0 0 10px"
+					size="26px"
+					onClick={() => deleteOnClick(id)}
+				></Icon>
 			</div>
 		</div>
 	);
@@ -71,10 +100,11 @@ const ProductTableRowContainer = ({
 export const ProductTableRow = styled(ProductTableRowContainer)`
 	display: flex;
 	padding: 10px;
+	height: 120px;
 
 	border-radius: 10px;
 	background-color: #eee;
-	margin-top: 10px;
+	margin-bottom: 10px;
 
 	& .id-column {
 		width: 80px;

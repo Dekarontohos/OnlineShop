@@ -6,6 +6,7 @@ import {
 	fetchProducts,
 	addProduct,
 	changeProduct,
+	removeProduct,
 } from "./operations";
 
 export const server = {
@@ -16,4 +17,5 @@ export const server = {
 	fetchProducts,
 	addProduct,
 	changeProduct,
+	removeProduct,
 };

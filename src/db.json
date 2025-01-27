@@ -99,20 +99,28 @@
       "image_url": "http://dummyimage.com/100"
     },
     {
-      "id": "db5a",
-      "name": "Николай ",
-      "category": 3,
-      "price": 123,
-      "count": 0,
-      "image_url": "addadad"
+      "id": "2f27",
+      "name": "Телевизор 123",
+      "category": 0,
+      "price": 123123123,
+      "count": 1121212,
+      "image_url": "sadaDREW"
     },
     {
-      "id": "c0d1",
-      "name": "Николай asdasdasdasdasdadasdasdasdadasdasd",
+      "id": "4d43",
+      "name": "Телевизор",
       "category": 3,
       "price": 123,
-      "count": 0,
-      "image_url": "addadad"
+      "count": 1,
+      "image_url": "asdsadsad"
+    },
+    {
+      "id": "bd1b",
+      "name": "тест",
+      "category": 4,
+      "price": 5,
+      "count": 10,
+      "image_url": "фбг"
     }
   ],
   "categories": [

@@ -1,15 +1,32 @@
 import { Content, H2 } from "../../components";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
 import { ProductTableRow, TableRow, EditingBlock } from "./components";
 import { useServerRequest } from "../../hooks";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { selectEditingProduct } from "../../Redux/selectors";
+import { setEditingProduct } from "../../actions";
 
 const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
+	const [productState, setProductState] = useState({
+		name: "",
+		category: 0,
+		price: 0,
+		count: 0,
+		image_url: "",
+	});
 
 	const requestServer = useServerRequest();
+	const dispatch = useDispatch();
+
+	let productOnEditing = useSelector(selectEditingProduct);
+	const memoizedProductOnEditing = useMemo(
+		() => productOnEditing,
+		[productOnEditing],
+	);
 
 	useEffect(() => {
 		Promise.all([
@@ -27,6 +44,26 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 		});
 	}, [requestServer]);
 
+	const clearEditingProduct = useCallback(() => {
+		dispatch(
+			setEditingProduct({
+				category: null,
+				count: null,
+				id: null,
+				image_url: null,
+				name: null,
+				price: null,
+			}),
+		);
+		setProductState({
+			name: "",
+			category: 0,
+			price: 0,
+			count: 0,
+			image_url: "",
+		});
+	}, [dispatch]);
+
 	return (
 		<div className={className} ref={ref}>
 			<Content error={errorMessage}>
@@ -36,6 +73,10 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 						className={"editing-block"}
 						categories={categories}
 						setProducts={setProducts}
+						product={memoizedProductOnEditing}
+						productState={productState}
+						setProductState={setProductState}
+						clearEditingProduct={clearEditingProduct}
 					></EditingBlock>
 					<div className="table">
 						<TableRow className="table-header">
@@ -65,6 +106,9 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 									count={count}
 									image_url={image_url}
 									categories={categories}
+									product={memoizedProductOnEditing}
+									setProducts={setProducts}
+									clearEditingProduct={clearEditingProduct}
 								></ProductTableRow>
 							),
 						)}
@@ -79,11 +123,11 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 980px
+	width: 980px;
 	margin: 0 auto;
-	font-size:18px;
+	font-size: 18px;
 
 	& .product-managment-content {
-		display:flex;
+		display: flex;
 	}
 `;
