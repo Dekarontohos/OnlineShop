@@ -67,7 +67,9 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	return (
 		<div className={className} ref={ref}>
 			<Content error={errorMessage}>
-				<H2>Управление продуктами</H2>
+				<H2 className={"header"} margin={"40px 0 40px 350px"}>
+					Управление продуктами
+				</H2>
 				<div className="product-managment-content">
 					<EditingBlock
 						className={"editing-block"}
@@ -109,6 +111,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 										categories={categories}
 										product={memoizedProductOnEditing}
 										setProducts={setProducts}
+										setProductState={setProductState}
 										clearEditingProduct={
 											clearEditingProduct
 										}
@@ -129,6 +132,7 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 	flex-direction: column;
 	margin: 0 auto;
 	font-size: 18px;
+	margin-left: -350px;
 
 	& .product-managment-content {
 		display: flex;
@@ -142,6 +146,6 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 
 	& .table-body {
 		overflow-y: auto;
-		max-height: 75vh; // Ограничиваем высоту тела таблицы
+		max-height: 75vh;
 	}
 `;

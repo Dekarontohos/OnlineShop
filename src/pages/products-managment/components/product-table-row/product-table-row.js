@@ -28,11 +28,19 @@ const ProductTableRowContainer = ({
 	product,
 	setProducts,
 	clearEditingProduct,
+	setProductState,
 }) => {
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
 
 	const editOnClick = (product) => {
+		setProductState({
+			name: "",
+			category: 0,
+			price: 0,
+			count: 0,
+			image_url: "",
+		});
 		dispatch(setEditingProduct(product));
 	};
 
@@ -101,7 +109,6 @@ export const ProductTableRow = styled(ProductTableRowContainer)`
 	display: flex;
 	padding: 10px;
 	height: 120px;
-	overflow-y: auto;
 
 	border-radius: 10px;
 	background-color: #eee;

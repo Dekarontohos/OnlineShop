@@ -102,17 +102,17 @@
       "id": "2f27",
       "name": "Телевизор 123ssssssssssssssssssssssssssssssssssss",
       "category": 0,
-      "price": 123123123,
-      "count": 1121212,
+      "price": 1,
+      "count": 2,
       "image_url": "sadaDREW"
     },
     {
-      "id": "bd1b",
-      "name": "тест",
-      "category": 4,
-      "price": 5,
-      "count": 10,
-      "image_url": "фбг"
+      "id": "7ee3",
+      "name": "sdfdfgdfgdfg",
+      "category": 2,
+      "price": 312,
+      "count": 123,
+      "image_url": "sdfsdfdsvcxdcxcfe"
     }
   ],
   "categories": [

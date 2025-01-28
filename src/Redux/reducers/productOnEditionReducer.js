@@ -15,8 +15,6 @@ export const productOnEditionReducer = (
 ) => {
 	switch (action.type) {
 		case ACTION_TYPE.SET_EDITING_PRODUCT: {
-			console.log(action.payload);
-			console.log(state);
 			if (action.payload.id === state.id) {
 				return initialProductOnEditionState;
 			} else {
