@@ -88,30 +88,34 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 							<div className="image-column">Фото</div>
 							<div className="actions-column">Действия</div>
 						</TableRow>
-						{products.map(
-							({
-								id,
-								name,
-								category,
-								price,
-								count,
-								image_url,
-							}) => (
-								<ProductTableRow
-									key={id}
-									id={id}
-									name={name}
-									category={categories[category]}
-									price={price}
-									count={count}
-									image_url={image_url}
-									categories={categories}
-									product={memoizedProductOnEditing}
-									setProducts={setProducts}
-									clearEditingProduct={clearEditingProduct}
-								></ProductTableRow>
-							),
-						)}
+						<div className="table-body">
+							{products.map(
+								({
+									id,
+									name,
+									category,
+									price,
+									count,
+									image_url,
+								}) => (
+									<ProductTableRow
+										key={id}
+										id={id}
+										name={name}
+										category={categories[category]}
+										price={price}
+										count={count}
+										image_url={image_url}
+										categories={categories}
+										product={memoizedProductOnEditing}
+										setProducts={setProducts}
+										clearEditingProduct={
+											clearEditingProduct
+										}
+									></ProductTableRow>
+								),
+							)}
+						</div>
 					</div>
 				</div>
 			</Content>
@@ -123,11 +127,21 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 980px;
 	margin: 0 auto;
 	font-size: 18px;
 
 	& .product-managment-content {
 		display: flex;
+	}
+
+	& .table {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	& .table-body {
+		overflow-y: auto;
+		max-height: 75vh; // Ограничиваем высоту тела таблицы
 	}
 `;

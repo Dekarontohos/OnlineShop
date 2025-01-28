@@ -15,10 +15,16 @@ export const productOnEditionReducer = (
 ) => {
 	switch (action.type) {
 		case ACTION_TYPE.SET_EDITING_PRODUCT: {
-			return {
-				...state,
-				...action.payload,
-			};
+			console.log(action.payload);
+			console.log(state);
+			if (action.payload.id === state.id) {
+				return initialProductOnEditionState;
+			} else {
+				return {
+					...state,
+					...action.payload,
+				};
+			}
 		}
 		default:
 			return state;

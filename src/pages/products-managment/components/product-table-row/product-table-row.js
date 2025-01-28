@@ -101,6 +101,7 @@ export const ProductTableRow = styled(ProductTableRowContainer)`
 	display: flex;
 	padding: 10px;
 	height: 120px;
+	overflow-y: auto;
 
 	border-radius: 10px;
 	background-color: #eee;
