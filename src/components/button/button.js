@@ -7,6 +7,7 @@ const ButtonContainer = ({
 	fontSize,
 	height,
 	margin,
+	backgroundColor,
 	...props
 }) => {
 	return (
@@ -21,7 +22,7 @@ export const Button = styled(ButtonContainer)`
 	width: ${({ width = "100%" }) => width};
 	height: ${({ height = "28px;" }) => height};
 	border: 1px solid #000;
-	background-color: #eee;
+	background-color: ${({ backgroundColor = "#eee" }) => backgroundColor};
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	transition: all 0.3s ease;

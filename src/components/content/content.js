@@ -6,7 +6,6 @@ const Div = styled.div`
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
-	height: calc(100vh - 240px);
 `;
 
 export const Content = ({ children, error }) =>
@@ -16,5 +15,5 @@ export const Content = ({ children, error }) =>
 			<div>{error}</div>
 		</Div>
 	) : (
-		children
+		<Div>{children}</Div>
 	);

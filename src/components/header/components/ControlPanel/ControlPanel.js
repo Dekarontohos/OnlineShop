@@ -55,13 +55,15 @@ const ControlPanelContainer = ({ className }) => {
 				)}
 			</RightsAligned>
 			<RightsAligned>
-				<Link to="/productsManagment">
-					<Icon
-						id="fa-th-list"
-						margin="10px 0 0 0"
-						size="26px"
-					></Icon>
-				</Link>
+				{roleId === ROLE.ADMIN ? (
+					<Link to="/productsManagment">
+						<Icon
+							id="fa-th-list"
+							margin="10px 0 0 0"
+							size="26px"
+						></Icon>
+					</Link>
+				) : null}
 				<Link to="/basket">
 					<Icon
 						id="fa-shopping-basket"

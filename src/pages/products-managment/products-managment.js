@@ -39,6 +39,9 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 				);
 				return;
 			}
+			productsResponse.response.sort((a, b) => {
+				return a.id - b.id;
+			});
 			setProducts(productsResponse.response);
 			setCategories(categoriesResponse.response);
 		});
@@ -67,7 +70,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	return (
 		<div className={className} ref={ref}>
 			<Content error={errorMessage}>
-				<H2 className={"header"} margin={"40px 0 40px 350px"}>
+				<H2 className={"header"} margin={"40px 0"}>
 					Управление продуктами
 				</H2>
 				<div className="product-managment-content">
@@ -104,7 +107,13 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 										key={id}
 										id={id}
 										name={name}
-										category={categories[category]}
+										category={
+											categories.filter(
+												(locCategory) =>
+													locCategory.id ===
+													String(category),
+											)[0]
+										}
 										price={price}
 										count={count}
 										image_url={image_url}
@@ -132,10 +141,10 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 	flex-direction: column;
 	margin: 0 auto;
 	font-size: 18px;
-	margin-left: -350px;
 
 	& .product-managment-content {
 		display: flex;
+		margin-left: -350px;
 	}
 
 	& .table {
@@ -146,6 +155,8 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 
 	& .table-body {
 		overflow-y: auto;
+		overflow-x: hidden;
 		max-height: 75vh;
+		max-width: 1020px;
 	}
 `;

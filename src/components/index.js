@@ -7,3 +7,4 @@ export * from "./auth-from-error/auth-form-error";
 export * from "./content/content";
 export * from "./label/label";
 export * from "./select/select";
+export * from "./search-row/search-row";

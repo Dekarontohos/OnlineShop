@@ -113,6 +113,7 @@ export const ProductTableRow = styled(ProductTableRowContainer)`
 	border-radius: 10px;
 	background-color: #eee;
 	margin-bottom: 10px;
+	width: 1020px;
 
 	& .id-column {
 		width: 80px;
@@ -151,5 +152,6 @@ export const ProductTableRow = styled(ProductTableRowContainer)`
 		${mainStyles}
 		display: flex;
 		justify-content: space-between;
+		margin: auto 20px auto 0;
 	}
 `;
