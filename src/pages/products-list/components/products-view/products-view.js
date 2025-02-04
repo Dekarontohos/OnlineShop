@@ -75,7 +75,7 @@ const ProductViewContainer = forwardRef(
 						{sortArrow}
 					</div>
 				</Button>
-				<div className="products-cell">
+				<div className="products-cells">
 					{products.map(
 						({ id, name, category, price, count, image_url }) => (
 							<ProductElement
@@ -105,10 +105,10 @@ export const ProductView = styled(ProductViewContainer)`
 	height: max-content;
 	width: 800px;
 
-	& .products-cell {
+	& .products-cells {
 		overflow-y: auto;
 		overflow-x: hidden;
-		max-height: 70vh;
+		max-height: 69vh;
 		max-width: 800px;
 	}
 `;

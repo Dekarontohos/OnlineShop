@@ -32,6 +32,12 @@ const ControlPanelContainer = ({ className }) => {
 
 	const navigate = useNavigate();
 
+	const onLogout = () => {
+		dispatch(logout(session));
+		sessionStorage.removeItem(`userData`); 
+		navigate("/login");
+	}
+
 	return (
 		<div className={className}>
 			<RightsAligned>
@@ -46,10 +52,7 @@ const ControlPanelContainer = ({ className }) => {
 							id="fa fa-sign-out"
 							margin="0 0 0 10px"
 							size="26px"
-							onClick={() => {
-								dispatch(logout(session));
-								navigate("/login");
-							}}
+							onClick={onLogout}
 						></Icon>
 					</>
 				)}

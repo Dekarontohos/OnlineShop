@@ -73,6 +73,7 @@ const AuthorizationContainer = ({ className }) => {
 			}
 
 			dispatch(setUser(response));
+			sessionStorage.setItem(`userData`, JSON.stringify(response) ); 
 		});
 	};
 	const formError = errors?.login?.message || errors?.password?.message;
