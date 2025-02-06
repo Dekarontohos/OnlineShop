@@ -2,9 +2,13 @@ import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import { Authorization, ProductsManagment, Registration } from "./pages";
+import {
+	Authorization,
+	ProductsManagment,
+	Registration,
+	ProductsList,
+} from "./pages";
 import "./App.css";
-import { ProductsList } from "./pages/products-list/products-list";
 import { setUser } from "./actions";
 import { useDispatch } from "react-redux";
 
@@ -22,29 +26,31 @@ const AppColumn = styled.div`
 `;
 
 export const OnlineShop = () => {
-	const dispatch = useDispatch(); 
+	const dispatch = useDispatch();
 
-	useLayoutEffect(()=>{
-		const currentUserDataJSON =  sessionStorage.getItem("userData"); 
+	useLayoutEffect(() => {
+		const currentUserDataJSON = sessionStorage.getItem("userData");
 
-		if(!currentUserDataJSON) { 
+		if (!currentUserDataJSON) {
 			return;
 		}
 
 		const currentUserData = JSON.parse(currentUserDataJSON);
 
-		dispatch(setUser({
-			...currentUserData,
-			roleId: Number(currentUserData.roleId) 
-		}));
-	},[dispatch]);  
-	 
+		dispatch(
+			setUser({
+				...currentUserData,
+				roleId: Number(currentUserData.roleId),
+			}),
+		);
+	}, [dispatch]);
+
 	return (
 		<AppColumn>
 			<Header></Header>
 			<Page>
 				<Routes>
-					<Route path="/" element={<ProductsList></ProductsList>} />
+					<Route path="/" element={<ProductsList />} />
 					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<Registration />} />
 					<Route

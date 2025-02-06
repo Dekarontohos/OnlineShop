@@ -60,7 +60,7 @@ const EditingBlockContainer = forwardRef(
 				case "category":
 					setProductState({
 						...productState,
-						category: Number(value),
+						category: value,
 					});
 					break;
 				case "price":
@@ -84,6 +84,9 @@ const EditingBlockContainer = forwardRef(
 			} else if (productState.price === 0) {
 				alert("Цена не может быть нулевой.");
 				return;
+			} else if (productState.category === "") {
+				alert("Необходимо указать категорию.");
+				return;
 			}
 			requestServer("addProduct", productState).then((result) => {
 				if (result.response === "success") {
@@ -104,9 +107,6 @@ const EditingBlockContainer = forwardRef(
 				return;
 			}
 			requestServer("changeProduct", productState).then((result) => {
-				if (result.response === "success") {
-					alert("Продукт обновлен.");
-				}
 				requestServer("fetchProducts").then((result) => {
 					setProducts(result.response);
 				});
@@ -146,6 +146,10 @@ const EditingBlockContainer = forwardRef(
 								value={productState.category}
 								onChange={handleChange}
 							>
+								{" "}
+								<option value="" disabled>
+									Выберите категорию
+								</option>
 								{categories.map((category) => (
 									<option
 										key={category.id}

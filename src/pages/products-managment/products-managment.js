@@ -13,7 +13,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [productState, setProductState] = useState({
 		name: "",
-		category: 0,
+		category: "",
 		price: 0,
 		count: 0,
 		image_url: "",
@@ -60,7 +60,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 		);
 		setProductState({
 			name: "",
-			category: 0,
+			category: "",
 			price: 0,
 			count: 0,
 			image_url: "",

@@ -5,7 +5,6 @@ import { setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 
 const mainStyles = `
-
 		font-size: 20px;
 		font-weight: 600;
 		padding: 10px;

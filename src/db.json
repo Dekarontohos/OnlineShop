@@ -37,7 +37,7 @@
     {
       "id": "1",
       "name": "Наушники Sony",
-      "category": 1,
+      "category": "1",
       "price": 2999,
       "count": 50,
       "image_url": "http://dummyimage.com/100"
@@ -45,7 +45,7 @@
     {
       "id": "2",
       "name": "Планшет Samsung",
-      "category": 2,
+      "category": "2",
       "price": 42999,
       "count": 30,
       "image_url": "http://dummyimage.com/100"
@@ -53,7 +53,7 @@
     {
       "id": "3",
       "name": "Фитнес-браслет",
-      "category": 3,
+      "category": "3",
       "price": 6999,
       "count": 25,
       "image_url": "http://dummyimage.com/100"
@@ -61,7 +61,7 @@
     {
       "id": "4",
       "name": "Микроволновая печь",
-      "category": 4,
+      "category": "4",
       "price": 14999,
       "count": 20,
       "image_url": "http://dummyimage.com/100"
@@ -69,7 +69,7 @@
     {
       "id": "5",
       "name": "Игровая приставка",
-      "category": 5,
+      "category": "5",
       "price": 29999,
       "count": 15,
       "image_url": "http://dummyimage.com/100"
@@ -77,7 +77,7 @@
     {
       "id": "6",
       "name": "Клавиатура игровая",
-      "category": 1,
+      "category": "1",
       "price": 1999,
       "count": 40,
       "image_url": "http://dummyimage.com/100"
@@ -85,7 +85,7 @@
     {
       "id": "7",
       "name": "Ноутбук Asus",
-      "category": 2,
+      "category": "2",
       "price": 59999,
       "count": 8,
       "image_url": "http://dummyimage.com/100"
@@ -93,7 +93,7 @@
     {
       "id": "8",
       "name": "Смарт-часы Garmin",
-      "category": 3,
+      "category": "3",
       "price": 15999,
       "count": 35,
       "image_url": "http://dummyimage.com/100"
@@ -101,7 +101,7 @@
     {
       "id": "9",
       "name": "Электрическая плита",
-      "category": 4,
+      "category": "4",
       "price": 24999,
       "count": 10,
       "image_url": "http://dummyimage.com/100"
@@ -109,7 +109,7 @@
     {
       "id": "10",
       "name": "Игровой монитор",
-      "category": 5,
+      "category": "5",
       "price": 17999,
       "count": 18,
       "image_url": "http://dummyimage.com/100"
@@ -117,7 +117,7 @@
     {
       "id": "11",
       "name": "Смартфон Xiaomi",
-      "category": 2,
+      "category": "2",
       "price": 34999,
       "count": 22,
       "image_url": "http://dummyimage.com/100"
@@ -125,7 +125,7 @@
     {
       "id": "12",
       "name": "Электрочайник",
-      "category": 4,
+      "category": "4",
       "price": 2499,
       "count": 50,
       "image_url": "http://dummyimage.com/100"
@@ -133,7 +133,7 @@
     {
       "id": "13",
       "name": "Компьютерная мышь",
-      "category": 1,
+      "category": "1",
       "price": 899,
       "count": 70,
       "image_url": "http://dummyimage.com/100"
@@ -141,7 +141,7 @@
     {
       "id": "14",
       "name": "Набор для кухни",
-      "category": 6,
+      "category": "6",
       "price": 1399,
       "count": 44,
       "image_url": "http://dummyimage.com/100"
@@ -149,7 +149,7 @@
     {
       "id": "15",
       "name": "Сушильная машина",
-      "category": 4,
+      "category": "4",
       "price": 39999,
       "count": 12,
       "image_url": "http://dummyimage.com/100"
@@ -157,7 +157,7 @@
     {
       "id": "16",
       "name": "Игровой контроллер",
-      "category": 5,
+      "category": "5",
       "price": 3499,
       "count": 29,
       "image_url": "http://dummyimage.com/100"
@@ -165,7 +165,7 @@
     {
       "id": "17",
       "name": "Планшетный компьютер",
-      "category": 2,
+      "category": "2",
       "price": 28999,
       "count": 15,
       "image_url": "http://dummyimage.com/100"
@@ -173,7 +173,7 @@
     {
       "id": "18",
       "name": "Кофемашина DeLonghi",
-      "category": 6,
+      "category": "6",
       "price": 17999,
       "count": 17,
       "image_url": "http://dummyimage.com/100"
@@ -181,7 +181,7 @@
     {
       "id": "19",
       "name": "Системный блок",
-      "category": 1,
+      "category": "1",
       "price": 24999,
       "count": 13,
       "image_url": "http://dummyimage.com/100"
@@ -189,7 +189,7 @@
     {
       "id": "20",
       "name": "Внешний драйв USB",
-      "category": 2,
+      "category": "2",
       "price": 1999,
       "count": 60,
       "image_url": "http://dummyimage.com/100"
@@ -221,7 +221,26 @@
       "name": "Кухонные аксессуары"
     }
   ],
-  "sessions" : {
-    
-  }
+  "sessions": [
+    {
+      "id": "0edd",
+      "hash": "0.61705666695770355900663162174168974161148071289063",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      }
+    },
+    {
+      "id": "d77a",
+      "hash": "0.76959874403562733569117426668526604771614074707031",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      }
+    }
+  ]
 }
