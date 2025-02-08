@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
-import { Header } from "./components";
+import { Header, Modal } from "./components";
 import {
 	Authorization,
 	ProductsManagment,
@@ -65,6 +65,7 @@ export const OnlineShop = () => {
 					<Route path="*" element={<div>Ошибка</div>} />
 				</Routes>
 			</Page>
+			<Modal />
 		</AppColumn>
 	);
 };

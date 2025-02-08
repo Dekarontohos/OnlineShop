@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Icon } from "../../../../components";
 import { useDispatch } from "react-redux";
-import { setEditingProduct } from "../../../../actions";
+import { CLOSE_MODAL, openModal, setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 
 const mainStyles = `
@@ -43,11 +43,8 @@ const ProductTableRowContainer = ({
 		dispatch(setEditingProduct(product));
 	};
 
-	const deleteOnClick = (id) => {
-		requestServer("removeProduct", id).then((result) => {
-			if (result.response === "success") {
-				alert("Продукт удалён.");
-			}
+	const asyncRemoveProduct = async (id) => {
+		requestServer("removeProduct", id).then(() => {
 			requestServer("fetchProducts").then((result) => {
 				setProducts(result.response);
 			});
@@ -55,6 +52,19 @@ const ProductTableRowContainer = ({
 		if (id === product.id) {
 			clearEditingProduct();
 		}
+	};
+
+	const deleteOnClick = (id) => {
+		dispatch(
+			openModal({
+				text: "Удалить продукт?",
+				onConfirm: () => {
+					asyncRemoveProduct(id);
+					dispatch(CLOSE_MODAL);
+				},
+				onCancel: () => dispatch(CLOSE_MODAL),
+			}),
+		);
 	};
 
 	return (

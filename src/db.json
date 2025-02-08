@@ -193,6 +193,14 @@
       "price": 1999,
       "count": 60,
       "image_url": "http://dummyimage.com/100"
+    },
+    {
+      "id": "d7a6",
+      "name": "1",
+      "category": "1",
+      "price": 11,
+      "count": 1,
+      "image_url": "123123"
     }
   ],
   "categories": [
@@ -235,6 +243,16 @@
     {
       "id": "d77a",
       "hash": "0.76959874403562733569117426668526604771614074707031",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      }
+    },
+    {
+      "id": "ff78",
+      "hash": "0.39778984295719133079671792074805125594139099121094",
       "user": {
         "id": "0",
         "login": "Admin",
