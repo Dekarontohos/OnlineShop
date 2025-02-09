@@ -108,7 +108,7 @@ export const ProductView = styled(ProductViewContainer)`
 	& .products-cells {
 		overflow-y: auto;
 		overflow-x: hidden;
-		max-height: 69vh;
+		height: 66.7vh;
 		max-width: 800px;
 	}
 `;

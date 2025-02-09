@@ -195,12 +195,268 @@
       "image_url": "http://dummyimage.com/100"
     },
     {
-      "id": "d7a6",
-      "name": "1",
+      "id": "0edc",
+      "name": "Телевизор",
       "category": "1",
-      "price": 11,
+      "price": 1,
       "count": 1,
-      "image_url": "123123"
+      "image_url": "sdsdf"
+    },
+    {
+      "id": "7625",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "ed35",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "f3fa",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "c651",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "15be",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "bb70",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "27b8",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "8664",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "b632",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "521e",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "418b",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "bd1f",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "e18b",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "217f",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "b5be",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "9557",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "70f4",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "2238",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "6e86",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "b396",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "6048",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "c0b1",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "ae05",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "90f7",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "56ca",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "f7f6",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "0d4d",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "afbd",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "4be5",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "30c4",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "2cb8",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "36f5",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
     }
   ],
   "categories": [
@@ -231,28 +487,8 @@
   ],
   "sessions": [
     {
-      "id": "0edd",
-      "hash": "0.61705666695770355900663162174168974161148071289063",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      }
-    },
-    {
-      "id": "d77a",
-      "hash": "0.76959874403562733569117426668526604771614074707031",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      }
-    },
-    {
-      "id": "ff78",
-      "hash": "0.39778984295719133079671792074805125594139099121094",
+      "id": "b6ab",
+      "hash": "0.47873207658277006082414573029382154345512390136719",
       "user": {
         "id": "0",
         "login": "Admin",

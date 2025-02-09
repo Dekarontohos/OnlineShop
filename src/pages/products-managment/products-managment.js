@@ -6,11 +6,15 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { selectEditingProduct } from "../../Redux/selectors";
 import { setEditingProduct } from "../../actions";
+import { Pagination } from "../products-list/components";
+import { PAGINATIONS_LIMIT } from "../../constants";
 
 const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
+	const [page, setPage] = useState(1);
+	const [lastPage, setLastPage] = useState(1);
 	const [productState, setProductState] = useState({
 		name: "",
 		category: "",
@@ -30,7 +34,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 
 	useEffect(() => {
 		Promise.all([
-			requestServer("fetchProducts"),
+			requestServer("fetchProducts", page, PAGINATIONS_LIMIT),
 			requestServer("fetchCategories"),
 		]).then(([productsResponse, categoriesResponse]) => {
 			if (productsResponse.error || categoriesResponse.error) {
@@ -39,13 +43,14 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 				);
 				return;
 			}
-			productsResponse.response.sort((a, b) => {
+			productsResponse.response.data.sort((a, b) => {
 				return a.id - b.id;
 			});
-			setProducts(productsResponse.response);
+			setProducts(productsResponse.response.data);
 			setCategories(categoriesResponse.response);
+			setLastPage(productsResponse.response.last);
 		});
-	}, [requestServer]);
+	}, [requestServer, page]);
 
 	const clearEditingProduct = useCallback(() => {
 		dispatch(
@@ -82,6 +87,8 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 						productState={productState}
 						setProductState={setProductState}
 						clearEditingProduct={clearEditingProduct}
+						page={page}
+						setLastPage={setLastPage}
 					></EditingBlock>
 					<div className="table">
 						<TableRow className="table-header">
@@ -93,41 +100,60 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 							<div className="image-column">Фото</div>
 							<div className="actions-column">Действия</div>
 						</TableRow>
-						<div className="table-body">
-							{products.map(
-								({
-									id,
-									name,
-									category,
-									price,
-									count,
-									image_url,
-								}) => (
-									<ProductTableRow
-										key={id}
-										id={id}
-										name={name}
-										category={
-											categories.filter(
-												(locCategory) =>
-													locCategory.id ===
-													String(category),
-											)[0]
-										}
-										price={price}
-										count={count}
-										image_url={image_url}
-										categories={categories}
-										product={memoizedProductOnEditing}
-										setProducts={setProducts}
-										setProductState={setProductState}
-										clearEditingProduct={
-											clearEditingProduct
-										}
-									></ProductTableRow>
-								),
+						{products.length ? (
+							<div className="table-body">
+								{products.map(
+									({
+										id,
+										name,
+										category,
+										price,
+										count,
+										image_url,
+									}) => (
+										<ProductTableRow
+											key={id}
+											id={id}
+											name={name}
+											category={
+												categories.filter(
+													(locCategory) =>
+														locCategory.id ===
+														String(category),
+												)[0]
+											}
+											price={price}
+											count={count}
+											image_url={image_url}
+											categories={categories}
+											product={memoizedProductOnEditing}
+											setProducts={setProducts}
+											setProductState={setProductState}
+											clearEditingProduct={
+												clearEditingProduct
+											}
+											page={page}
+											setPage={setPage}
+											setLastPage={setLastPage}
+										></ProductTableRow>
+									),
+								)}
+							</div>
+						) : (
+							<div className="no-products-found">
+								Продукты не найдены
+							</div>
+						)}
+						{lastPage > 1 &&
+							(products.length >= PAGINATIONS_LIMIT ||
+								products.length > 0) && (
+								<Pagination
+									className="pagination"
+									page={page}
+									setPage={setPage}
+									lastPage={lastPage}
+								></Pagination>
 							)}
-						</div>
 					</div>
 				</div>
 			</Content>
@@ -156,7 +182,17 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 	& .table-body {
 		overflow-y: auto;
 		overflow-x: hidden;
-		max-height: 75vh;
+		height: 73vh;
 		max-width: 1020px;
+	}
+
+	& .pagination {
+		margin: 10px 10px 10px 0;
+	}
+
+	& .no-products-found {
+		text-align: center;
+		font-size: 24px;
+		margin-top: 20px;
 	}
 `;

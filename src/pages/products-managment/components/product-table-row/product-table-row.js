@@ -3,6 +3,7 @@ import { Icon } from "../../../../components";
 import { useDispatch } from "react-redux";
 import { CLOSE_MODAL, openModal, setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
+import { PAGINATIONS_LIMIT } from "../../../../constants";
 
 const mainStyles = `
 		font-size: 20px;
@@ -28,6 +29,9 @@ const ProductTableRowContainer = ({
 	setProducts,
 	clearEditingProduct,
 	setProductState,
+	page,
+	setLastPage,
+	setPage,
 }) => {
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
@@ -45,9 +49,15 @@ const ProductTableRowContainer = ({
 
 	const asyncRemoveProduct = async (id) => {
 		requestServer("removeProduct", id).then(() => {
-			requestServer("fetchProducts").then((result) => {
-				setProducts(result.response);
-			});
+			requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
+				(result) => {
+					setProducts(result.response.data);
+					setLastPage(result.response.last);
+					if (page > result.response.last) {
+						setPage(result.response.last);
+					}
+				},
+			);
 		});
 		if (id === product.id) {
 			clearEditingProduct();

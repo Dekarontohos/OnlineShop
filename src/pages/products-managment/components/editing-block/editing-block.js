@@ -5,6 +5,7 @@ import { forwardRef, useEffect, useMemo } from "react";
 import { setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { useLocation } from "react-router-dom";
+import { PAGINATIONS_LIMIT } from "../../../../constants";
 
 const EditingBlockContainer = forwardRef(
 	(
@@ -16,6 +17,8 @@ const EditingBlockContainer = forwardRef(
 			productState,
 			setProductState,
 			clearEditingProduct,
+			page,
+			setLastPage,
 		},
 		ref,
 	) => {
@@ -92,9 +95,12 @@ const EditingBlockContainer = forwardRef(
 				if (result.response === "success") {
 					alert("Продукт добавлен.");
 				}
-				requestServer("fetchProducts").then((result) => {
-					setProducts(result.response);
-				});
+				requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
+					(result) => {
+						setProducts(result.response.data);
+						setLastPage(result.response.last);
+					},
+				);
 			});
 		};
 
@@ -107,9 +113,12 @@ const EditingBlockContainer = forwardRef(
 				return;
 			}
 			requestServer("changeProduct", productState).then((result) => {
-				requestServer("fetchProducts").then((result) => {
-					setProducts(result.response);
-				});
+				requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
+					(result) => {
+						setProducts(result.response.data);
+						setLastPage(result.response.last);
+					},
+				);
 			});
 			clearEditingProduct();
 		};

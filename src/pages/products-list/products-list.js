@@ -2,8 +2,8 @@ import { forwardRef, useEffect, useState } from "react";
 import { Content, H2 } from "../../components";
 import styled from "styled-components";
 import { useServerRequest } from "../../hooks";
-import { FilterCategoryBlock } from "./components/filter-category-block/filter-category-block";
-import { ProductView } from "./components/products-view/products-view";
+import { FilterCategoryBlock, Pagination, ProductView } from "./components";
+import { PAGINATIONS_LIMIT } from "../../constants";
 
 const ProductsListContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);
@@ -13,12 +13,14 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 	const [filterName, setFilterName] = useState("");
 	const [filteredProducts, setFiltredProducts] = useState([]);
 	const [sort, setSort] = useState("");
+	const [page, setPage] = useState(1);
+	const [lastPage, setLastPage] = useState(1);
 
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
 		Promise.all([
-			requestServer("fetchProducts"),
+			requestServer("fetchProducts", page, PAGINATIONS_LIMIT),
 			requestServer("fetchCategories"),
 		]).then(([productsResponse, categoriesResponse]) => {
 			if (productsResponse.error || categoriesResponse.error) {
@@ -27,14 +29,15 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 				);
 				return;
 			}
-			productsResponse.response.sort((a, b) => {
+			productsResponse.response.data.sort((a, b) => {
 				return a.id - b.id;
 			});
-			setProducts(productsResponse.response);
-			setFiltredProducts(productsResponse.response);
+			setProducts(productsResponse.response.data);
+			setFiltredProducts(productsResponse.response.data);
 			setCategories(categoriesResponse.response);
+			setLastPage(productsResponse.response.last);
 		});
-	}, [requestServer]);
+	}, [requestServer, page]);
 
 	const filtersProduct = (valuefilterName, valuefilterCategory) => {
 		const locFilterName =
@@ -111,7 +114,12 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 				<H2 className={"header"} margin={"40px 0"} fontSize={"27px"}>
 					Список продуктов
 				</H2>
-				<div style={{ display: "flex", marginLeft: "-350px" }}>
+				<div
+					style={{
+						display: "flex",
+						marginLeft: "-350px",
+					}}
+				>
 					<FilterCategoryBlock
 						className="filter-category-block"
 						categories={categories}
@@ -120,18 +128,34 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 						categoryOnClick={categoryOnClick}
 					></FilterCategoryBlock>
 					<div>
-						<ProductView
-							className="product-view"
-							products={filteredProducts}
-							setProducts={setProducts}
-							sort={sort}
-							setSort={setSort}
-							categories={categories}
-							filterNameOnChange={filterNameOnChange}
-							sortOnClick={sortOnClick}
-						></ProductView>
+						{products.length ? (
+							<ProductView
+								className="product-view"
+								products={filteredProducts}
+								setProducts={setProducts}
+								sort={sort}
+								setSort={setSort}
+								categories={categories}
+								filterNameOnChange={filterNameOnChange}
+								sortOnClick={sortOnClick}
+							></ProductView>
+						) : (
+							<div className="no-products-found">
+								Продукты не найдены
+							</div>
+						)}
 					</div>
 				</div>
+				{lastPage > 1 &&
+					filteredProducts.length <= PAGINATIONS_LIMIT &&
+					filteredProducts.length > 0 && (
+						<Pagination
+							className="pagination"
+							page={page}
+							setPage={setPage}
+							lastPage={lastPage}
+						></Pagination>
+					)}
 			</Content>
 		</div>
 	);
@@ -151,5 +175,11 @@ export const ProductsList = styled(ProductsListContainer)`
 	& .product-view {
 		display: flex;
 		flex-direction: column;
+	}
+
+	& .no-products-found {
+		text-align: center;
+		font-size: 24px;
+		margin-top: 20px;
 	}
 `;
