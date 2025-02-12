@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { CLOSE_MODAL, openModal, setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { PAGINATIONS_LIMIT } from "../../../../constants";
+import { getLastPageFromLinks } from "../../../../actions/utils/get-last-page-from-links";
 
 const mainStyles = `
 		font-size: 20px;
@@ -26,6 +27,7 @@ const ProductTableRowContainer = ({
 	image_url,
 	categories,
 	product,
+	products,
 	setProducts,
 	clearEditingProduct,
 	setProductState,
@@ -49,15 +51,21 @@ const ProductTableRowContainer = ({
 
 	const asyncRemoveProduct = async (id) => {
 		requestServer("removeProduct", id).then(() => {
-			requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
-				(result) => {
-					setProducts(result.response.data);
-					setLastPage(result.response.last);
-					if (page > result.response.last) {
-						setPage(result.response.last);
-					}
-				},
-			);
+			requestServer(
+				"fetchProducts",
+				products.length > 1 ? page : page - 1,
+				PAGINATIONS_LIMIT,
+			).then((result) => {
+				setProducts(result.response.products);
+				// if (result.response.links) {
+
+				// }
+				const locLastPage = getLastPageFromLinks(result.response.links);
+				setLastPage(locLastPage);
+				if (page > locLastPage) {
+					setPage(locLastPage);
+				}
+			});
 		});
 		if (id === product.id) {
 			clearEditingProduct();

@@ -8,6 +8,7 @@ import { selectEditingProduct } from "../../Redux/selectors";
 import { setEditingProduct } from "../../actions";
 import { Pagination } from "../products-list/components";
 import { PAGINATIONS_LIMIT } from "../../constants";
+import { getLastPageFromLinks } from "../../actions/utils/get-last-page-from-links";
 
 const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);
@@ -43,12 +44,12 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 				);
 				return;
 			}
-			productsResponse.response.data.sort((a, b) => {
+			productsResponse.response.products.sort((a, b) => {
 				return a.id - b.id;
 			});
-			setProducts(productsResponse.response.data);
+			setProducts(productsResponse.response.products);
 			setCategories(categoriesResponse.response);
-			setLastPage(productsResponse.response.last);
+			setLastPage(getLastPageFromLinks(productsResponse.response.links));
 		});
 	}, [requestServer, page]);
 
@@ -127,6 +128,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 											image_url={image_url}
 											categories={categories}
 											product={memoizedProductOnEditing}
+											products={products}
 											setProducts={setProducts}
 											setProductState={setProductState}
 											clearEditingProduct={

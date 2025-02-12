@@ -6,6 +6,7 @@ import { setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { useLocation } from "react-router-dom";
 import { PAGINATIONS_LIMIT } from "../../../../constants";
+import { getLastPageFromLinks } from "../../../../actions/utils/get-last-page-from-links";
 
 const EditingBlockContainer = forwardRef(
 	(
@@ -97,8 +98,10 @@ const EditingBlockContainer = forwardRef(
 				}
 				requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
 					(result) => {
-						setProducts(result.response.data);
-						setLastPage(result.response.last);
+						setProducts(result.response.products);
+						setLastPage(
+							getLastPageFromLinks(result.response.links),
+						);
 					},
 				);
 			});
@@ -115,8 +118,10 @@ const EditingBlockContainer = forwardRef(
 			requestServer("changeProduct", productState).then((result) => {
 				requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
 					(result) => {
-						setProducts(result.response.data);
-						setLastPage(result.response.last);
+						setProducts(result.response.products);
+						setLastPage(
+							getLastPageFromLinks(result.response.links),
+						);
 					},
 				);
 			});

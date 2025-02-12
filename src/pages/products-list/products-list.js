@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useServerRequest } from "../../hooks";
 import { FilterCategoryBlock, Pagination, ProductView } from "./components";
 import { PAGINATIONS_LIMIT } from "../../constants";
+import { getLastPageFromLinks } from "../../actions/utils/get-last-page-from-links";
 
 const ProductsListContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);
@@ -29,13 +30,13 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 				);
 				return;
 			}
-			productsResponse.response.data.sort((a, b) => {
+			productsResponse.response.products.sort((a, b) => {
 				return a.id - b.id;
 			});
-			setProducts(productsResponse.response.data);
-			setFiltredProducts(productsResponse.response.data);
+			setProducts(productsResponse.response.products);
+			setFiltredProducts(productsResponse.response.products);
 			setCategories(categoriesResponse.response);
-			setLastPage(productsResponse.response.last);
+			setLastPage(getLastPageFromLinks(productsResponse.response.links));
 		});
 	}, [requestServer, page]);
 
