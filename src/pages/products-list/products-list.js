@@ -1,8 +1,8 @@
 import { forwardRef, useEffect, useState, useMemo } from "react";
-import { Content, H2 } from "../../components";
+import { Content, H2, Pagination } from "../../components";
 import styled from "styled-components";
 import { useServerRequest } from "../../hooks";
-import { FilterCategoryBlock, Pagination, ProductView } from "./components";
+import { FilterCategoryBlock, ProductView } from "./components";
 import { PAGINATIONS_LIMIT } from "../../constants";
 import { getLastPageFromLinks, debounce } from "../../utils";
 

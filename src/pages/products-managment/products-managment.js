@@ -1,4 +1,4 @@
-import { Content, H2 } from "../../components";
+import { Content, H2, Pagination } from "../../components";
 import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
 import { ProductTableRow, TableRow, EditingBlock } from "./components";
 import { useServerRequest } from "../../hooks";
@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { selectEditingProduct } from "../../Redux/selectors";
 import { setEditingProduct } from "../../actions";
-import { Pagination } from "../products-list/components";
 import { PAGINATIONS_LIMIT } from "../../constants";
 import { getLastPageFromLinks } from "../../utils/get-last-page-from-links";
 

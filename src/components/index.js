@@ -9,3 +9,4 @@ export * from "./label/label";
 export * from "./select/select";
 export * from "./search-row/search-row";
 export * from "./modal/modal";
+export * from "./pagination/pagination";
