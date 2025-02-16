@@ -1,27 +1,34 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState, useMemo } from "react";
 import { Content, H2 } from "../../components";
 import styled from "styled-components";
 import { useServerRequest } from "../../hooks";
 import { FilterCategoryBlock, Pagination, ProductView } from "./components";
 import { PAGINATIONS_LIMIT } from "../../constants";
-import { getLastPageFromLinks } from "../../actions/utils/get-last-page-from-links";
+import { getLastPageFromLinks, debounce } from "../../utils";
 
 const ProductsListContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [filterCategory, setFilterCategory] = useState(null);
-	const [filterName, setFilterName] = useState("");
-	const [filteredProducts, setFiltredProducts] = useState([]);
 	const [sort, setSort] = useState("");
 	const [page, setPage] = useState(1);
 	const [lastPage, setLastPage] = useState(1);
+	const [shouldSearch, setShouldSearch] = useState(false);
+	const [searchPhrase, setSearchPhrase] = useState("");
 
 	const requestServer = useServerRequest();
 
 	useEffect(() => {
 		Promise.all([
-			requestServer("fetchProducts", page, PAGINATIONS_LIMIT),
+			requestServer(
+				"fetchProducts",
+				page,
+				PAGINATIONS_LIMIT,
+				searchPhrase,
+				filterCategory?.id,
+				sort,
+			),
 			requestServer("fetchCategories"),
 		]).then(([productsResponse, categoriesResponse]) => {
 			if (productsResponse.error || categoriesResponse.error) {
@@ -30,83 +37,40 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 				);
 				return;
 			}
-			productsResponse.response.products.sort((a, b) => {
-				return a.id - b.id;
-			});
 			setProducts(productsResponse.response.products);
-			setFiltredProducts(productsResponse.response.products);
 			setCategories(categoriesResponse.response);
 			setLastPage(getLastPageFromLinks(productsResponse.response.links));
 		});
-	}, [requestServer, page]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [requestServer, page, shouldSearch]);
 
-	const filtersProduct = (valuefilterName, valuefilterCategory) => {
-		const locFilterName =
-			valuefilterName === null
-				? ""
-				: valuefilterName
-					? valuefilterName
-					: filterName;
+	const startDelayedSearch = useMemo(
+		() => debounce(setShouldSearch, 1000),
+		[],
+	);
 
-		const locFilterCategory =
-			valuefilterCategory === ""
-				? null
-				: valuefilterCategory
-					? valuefilterCategory
-					: filterCategory;
-		const filterResult = products.filter((product) => {
-			const matchesName =
-				locFilterName === "" ||
-				product.name.toLowerCase().includes(locFilterName);
-			const matchesCategory =
-				!locFilterCategory ||
-				String(product.category) === locFilterCategory.id;
-			return matchesName && matchesCategory;
-		});
-
-		setFiltredProducts(filterResult);
+	const onSearch = ({ target }) => {
+		setSearchPhrase(target.value);
+		startDelayedSearch(!shouldSearch);
 	};
 
 	const categoryOnClick = (id) => {
 		if (id === filterCategory?.id) {
 			setFilterCategory(null);
-			filtersProduct("", "");
+			startDelayedSearch(!shouldSearch);
 		} else {
 			const selectedCategories = categories.filter(
 				(category) => category.id === id,
 			)[0];
 			setFilterCategory(selectedCategories);
-			filtersProduct("", selectedCategories);
-		}
-	};
-
-	const filterNameOnChange = (event) => {
-		setFilterName(event.target.value);
-		let filter = event.target.value;
-		if (filter === "") {
-			filtersProduct(null, null);
-		} else {
-			filtersProduct(filter, null);
+			startDelayedSearch(!shouldSearch);
 		}
 	};
 
 	const sortOnClick = () => {
 		let sortingType = sort === "" ? "+" : sort === "+" ? "-" : "";
 		setSort(sortingType);
-		let sortProducts = filteredProducts;
-		if (sortingType === "+") {
-			sortProducts.sort((a, b) => {
-				return a.price - b.price;
-			});
-		} else if (sortingType === "-") {
-			sortProducts.sort((a, b) => {
-				return b.price - a.price;
-			});
-		} else {
-			sortProducts.sort((a, b) => {
-				return a.id - b.id;
-			});
-		}
+		startDelayedSearch(!shouldSearch);
 	};
 
 	return (
@@ -129,27 +93,20 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 						categoryOnClick={categoryOnClick}
 					></FilterCategoryBlock>
 					<div>
-						{products.length ? (
-							<ProductView
-								className="product-view"
-								products={filteredProducts}
-								setProducts={setProducts}
-								sort={sort}
-								setSort={setSort}
-								categories={categories}
-								filterNameOnChange={filterNameOnChange}
-								sortOnClick={sortOnClick}
-							></ProductView>
-						) : (
-							<div className="no-products-found">
-								Продукты не найдены
-							</div>
-						)}
+						<ProductView
+							className="product-view"
+							products={products}
+							sort={sort}
+							setSort={setSort}
+							sortOnClick={sortOnClick}
+							searchPhrase={searchPhrase}
+							onSearch={onSearch}
+						></ProductView>
 					</div>
 				</div>
 				{lastPage > 1 &&
-					filteredProducts.length <= PAGINATIONS_LIMIT &&
-					filteredProducts.length > 0 && (
+					products.length <= PAGINATIONS_LIMIT &&
+					products.length > 0 && (
 						<Pagination
 							className="pagination"
 							page={page}

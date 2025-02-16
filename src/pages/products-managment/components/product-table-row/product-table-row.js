@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { CLOSE_MODAL, openModal, setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { PAGINATIONS_LIMIT } from "../../../../constants";
-import { getLastPageFromLinks } from "../../../../actions/utils/get-last-page-from-links";
+import { getLastPageFromLinks } from "../../../../utils/get-last-page-from-links";
 
 const mainStyles = `
 		font-size: 20px;

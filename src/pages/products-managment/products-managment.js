@@ -8,7 +8,7 @@ import { selectEditingProduct } from "../../Redux/selectors";
 import { setEditingProduct } from "../../actions";
 import { Pagination } from "../products-list/components";
 import { PAGINATIONS_LIMIT } from "../../constants";
-import { getLastPageFromLinks } from "../../actions/utils/get-last-page-from-links";
+import { getLastPageFromLinks } from "../../utils/get-last-page-from-links";
 
 const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	const [products, setProducts] = useState([]);

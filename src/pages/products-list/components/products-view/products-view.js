@@ -9,12 +9,11 @@ const ProductViewContainer = forwardRef(
 		{
 			className,
 			products,
-			setProducts,
 			sort,
 			setSort,
-			categories,
-			filterNameOnChange,
 			sortOnClick,
+			searchPhrase,
+			onSearch,
 		},
 		ref,
 	) => {
@@ -23,22 +22,6 @@ const ProductViewContainer = forwardRef(
 		useEffect(() => {
 			setSort("");
 		}, [location.pathname, setSort]);
-
-		function debounce(func, delay) {
-			let timeoutId;
-
-			return function (...args) {
-				if (timeoutId) {
-					clearTimeout(timeoutId);
-				}
-
-				timeoutId = setTimeout(() => {
-					func.apply(this, args);
-				}, delay);
-			};
-		}
-
-		const searchFunction = debounce(filterNameOnChange, 300);
 
 		let sortArrow = (
 			<Icon
@@ -55,7 +38,10 @@ const ProductViewContainer = forwardRef(
 
 		return (
 			<div className={className} ref={ref}>
-				<SearchRow onChange={searchFunction}></SearchRow>
+				<SearchRow
+					searchPhrase={searchPhrase}
+					onChange={onSearch}
+				></SearchRow>
 				<Button
 					width={"100%"}
 					fontSize={"22px"}
@@ -75,22 +61,21 @@ const ProductViewContainer = forwardRef(
 						{sortArrow}
 					</div>
 				</Button>
-				<div className="products-cells">
-					{products.map(
-						({ id, name, category, price, count, image_url }) => (
+				{products.length ? (
+					<div className="products-cells">
+						{products.map(({ id, name, price, image_url }) => (
 							<ProductElement
 								key={id}
 								id={id}
 								name={name}
-								category={categories[category]}
 								price={price}
-								count={count}
 								image_url={image_url}
-								setProducts={setProducts}
 							></ProductElement>
-						),
-					)}
-				</div>
+						))}
+					</div>
+				) : (
+					<div className="no-products-found">Продукты не найдены</div>
+				)}
 			</div>
 		);
 	},

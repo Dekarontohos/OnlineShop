@@ -6,7 +6,7 @@ import { setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
 import { useLocation } from "react-router-dom";
 import { PAGINATIONS_LIMIT } from "../../../../constants";
-import { getLastPageFromLinks } from "../../../../actions/utils/get-last-page-from-links";
+import { getLastPageFromLinks } from "../../../../utils/get-last-page-from-links";
 
 const EditingBlockContainer = forwardRef(
 	(
@@ -49,6 +49,7 @@ const EditingBlockContainer = forwardRef(
 			if (product) {
 				dispatch(setEditingProduct(product));
 			}
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, [dispatch]);
 
 		useEffect(() => {

@@ -13,9 +13,21 @@ const Div = styled.div`
 	width: 100%;
 `;
 
-const SearchRowContainer = ({ children, className, ...props }) => (
+const SearchRowContainer = ({
+	children,
+	className,
+	searchPhrase,
+	onChange,
+	...props
+}) => (
 	<Div>
-		<input className={className} {...props} placeholder="Поиск по имени">
+		<input
+			className={className}
+			{...props}
+			placeholder="Поиск по имени"
+			value={searchPhrase}
+			onChange={onChange}
+		>
 			{children}
 		</input>
 	</Div>
