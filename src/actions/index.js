@@ -4,3 +4,5 @@ export * from "./logout";
 export * from "./set_editing-product";
 export * from "./open-modal";
 export * from "./close-modal";
+export * from "./load-product-async";
+export * from "./set-product-data";

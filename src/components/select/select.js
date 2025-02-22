@@ -14,4 +14,5 @@ export const Select = styled(SelectContainer)`
 	font-size: 16px;
 	border-radius: 5px;
 	overflow: hidden;
+	text-align: center;
 `;

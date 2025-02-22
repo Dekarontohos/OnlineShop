@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../../../../../components";
+import { useNavigate } from "react-router-dom";
 
 const StyledDiv = styled.div`
 	display: flex;
@@ -8,6 +9,8 @@ const StyledDiv = styled.div`
 `;
 
 const ProductElementContainer = ({ className, id, name, price, image_url }) => {
+	const navigate = useNavigate();
+
 	return (
 		<div className={className}>
 			<img
@@ -42,7 +45,9 @@ const ProductElementContainer = ({ className, id, name, price, image_url }) => {
 				width={"150px"}
 				fontSize={"16px"}
 				height={"50px"}
-				onClick={() => {}}
+				onClick={() => {
+					navigate(`products/${id}`);
+				}}
 				margin={"0 20px 0 0"}
 			>
 				<span>Открыть карточку</span>

@@ -76,7 +76,7 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 	return (
 		<div className={className} ref={ref}>
 			<Content error={errorMessage}>
-				<H2 className={"header"} margin={"40px 0"} fontSize={"27px"}>
+				<H2 className={"header"} margin={"40px 0"}>
 					Список продуктов
 				</H2>
 				<div

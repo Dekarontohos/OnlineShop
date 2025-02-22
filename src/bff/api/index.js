@@ -9,3 +9,4 @@ export * from "./delete-product";
 export * from "./create-session";
 export * from "./get-session";
 export * from "./delete-session";
+export * from "./getProduct";

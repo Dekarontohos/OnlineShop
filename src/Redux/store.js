@@ -3,7 +3,6 @@ import { thunk } from "redux-thunk";
 import {
 	appReducer,
 	productReducer,
-	productsReducer,
 	userReducer,
 	productOnEditionReducer,
 } from "./reducers";
@@ -12,7 +11,6 @@ const reducer = combineReducers({
 	app: appReducer,
 	user: userReducer,
 	product: productReducer,
-	products: productsReducer,
 	productOnEdition: productOnEditionReducer,
 });
 

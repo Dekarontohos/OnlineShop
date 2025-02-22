@@ -29,4 +29,9 @@ const LogoContainer = (
 export const Logo = styled(LogoContainer)`
 	display: flex;
 	margin-top: -10px;
+
+	&:hover {
+		color: #5c5c5c;
+		cursor: pointer;
+	}
 `; // шаг 1

@@ -161,7 +161,6 @@ const EditingBlockContainer = forwardRef(
 								value={productState.category}
 								onChange={handleChange}
 							>
-								{" "}
 								<option value="" disabled>
 									Выберите категорию
 								</option>

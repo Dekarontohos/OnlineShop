@@ -6,3 +6,4 @@ export * from "./fetch-products";
 export * from "./add-product";
 export * from "./change-product";
 export * from "./removeProduct";
+export * from "./fetch-product";

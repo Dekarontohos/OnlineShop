@@ -7,6 +7,7 @@ import {
 	ProductsManagment,
 	Registration,
 	ProductsList,
+	Product,
 } from "./pages";
 import "./App.css";
 import { setUser } from "./actions";
@@ -53,10 +54,7 @@ export const OnlineShop = () => {
 					<Route path="/" element={<ProductsList />} />
 					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<Registration />} />
-					<Route
-						path="/products/:productId"
-						element={<div>Продукт</div>}
-					/>
+					<Route path="/products/:id" element={<Product />} />
 					<Route path="/basket" element={<div>Корзина</div>} />
 					<Route
 						path="/productsManagment"
