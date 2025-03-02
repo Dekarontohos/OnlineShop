@@ -49,6 +49,8 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 		[],
 	);
 
+	const startDelayedSort = useMemo(() => debounce(setShouldSearch, 100), []);
+
 	const onSearch = ({ target }) => {
 		setSearchPhrase(target.value);
 		startDelayedSearch(!shouldSearch);
@@ -70,7 +72,7 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 	const sortOnClick = () => {
 		let sortingType = sort === "" ? "+" : sort === "+" ? "-" : "";
 		setSort(sortingType);
-		startDelayedSearch(!shouldSearch);
+		startDelayedSort(!shouldSearch);
 	};
 
 	return (

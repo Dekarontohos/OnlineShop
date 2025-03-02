@@ -2,19 +2,11 @@ import styled from "styled-components";
 import { Button, SearchRow, SortArrow } from "../../../../components";
 import { forwardRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { ProductElement } from "./product-element/product-element";
+import { ProductInBusketElement } from "./product-in-busket-element/product-in-busket-element";
 
-const ProductViewContainer = forwardRef(
+const ProductInBusketViewContainer = forwardRef(
 	(
-		{
-			className,
-			products,
-			sort,
-			setSort,
-			sortOnClick,
-			searchPhrase,
-			onSearch,
-		},
+		{ className, products, sort, setSort, sortOnClick, filterNameOnChange },
 		ref,
 	) => {
 		const location = useLocation();
@@ -23,12 +15,25 @@ const ProductViewContainer = forwardRef(
 			setSort("");
 		}, [location.pathname, setSort]);
 
+		function debounce(func, delay) {
+			let timeoutId;
+
+			return function (...args) {
+				if (timeoutId) {
+					clearTimeout(timeoutId);
+				}
+
+				timeoutId = setTimeout(() => {
+					func.apply(this, args);
+				}, delay);
+			};
+		}
+
+		const searchFunction = debounce(filterNameOnChange, 300);
+
 		return (
 			<div className={className} ref={ref}>
-				<SearchRow
-					searchPhrase={searchPhrase}
-					onChange={onSearch}
-				></SearchRow>
+				<SearchRow onChange={searchFunction}></SearchRow>
 				<Button
 					width={"100%"}
 					fontSize={"22px"}
@@ -50,14 +55,11 @@ const ProductViewContainer = forwardRef(
 				</Button>
 				{products.length ? (
 					<div className="products-cells">
-						{products.map(({ id, name, price, image_url }) => (
-							<ProductElement
-								key={id}
-								id={id}
-								name={name}
-								price={price}
-								image_url={image_url}
-							></ProductElement>
+						{products.map((product) => (
+							<ProductInBusketElement
+								key={product.id}
+								product={product}
+							></ProductInBusketElement>
 						))}
 					</div>
 				) : (
@@ -68,7 +70,7 @@ const ProductViewContainer = forwardRef(
 	},
 );
 
-export const ProductView = styled(ProductViewContainer)`
+export const ProductInBusketView = styled(ProductInBusketViewContainer)`
 	border-radius: 5px;
 	align-items: center;
 	flex-direction: column;

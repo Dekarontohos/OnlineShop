@@ -34,16 +34,21 @@ const ControlPanelContainer = ({ className }) => {
 
 	const onLogout = () => {
 		dispatch(logout(session));
-		sessionStorage.removeItem(`userData`); 
+		sessionStorage.removeItem(`userData`);
 		navigate("/login");
-	}
+	};
 
 	return (
 		<div className={className}>
 			<RightsAligned>
 				{roleId === ROLE.GUEST ? (
-					<Button width="70px">
-						<Link to="/login">Войти</Link>
+					<Button
+						width="70px"
+						onClick={() => {
+							navigate("/login");
+						}}
+					>
+						Войти
 					</Button>
 				) : (
 					<>

@@ -7,3 +7,4 @@ export * from "./select-modal-onConfirm";
 export * from "./select-modal-onCancel";
 export * from "./select-modal-isOpen";
 export * from "./select-product";
+export * from "./select-products-in-busket";

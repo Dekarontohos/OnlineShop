@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../../../../../components";
 import { useNavigate } from "react-router-dom";
+import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../../constants";
 
 const StyledDiv = styled.div`
 	display: flex;
@@ -64,6 +65,6 @@ export const ProductElement = styled(ProductElementContainer)`
 	width: 800px;
 
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: ${MAIN_BACKGROUND_SECOND_COLOR_THEME};
 	margin-bottom: 10px;
 `;

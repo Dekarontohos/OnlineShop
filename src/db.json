@@ -372,8 +372,8 @@
     },
     {
       "id": "90f7",
-      "name": "игasdassadas dasdhasjdjashdaskd asdhkasdasdashdjas asjdhasidiasdiuasd",
-      "category": "2",
+      "name": "игasdassadas dasdhasjdjashdaskd asdhkasdasdashdjas asjdhasidiasdiuasd asdasdasd asdasdasdasdas asdasdasdasdas asdasdasdasdas asdasdasdasdas asdasdasdasd",
+      "category": 2,
       "price": 28999,
       "count": 15,
       "image_url": "http://dummyimage.com/500"
@@ -407,54 +407,14 @@
   ],
   "sessions": [
     {
-      "id": "b6ab",
-      "hash": "0.47873207658277006082414573029382154345512390136719",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      }
-    },
-    {
-      "hash": "0.46330854236107299470859288703650236129760742187500",
+      "hash": "0.48331545663592456740786929003661498427391052246094",
       "user": {
         "id": "0",
         "login": "Admin",
         "password": "123456",
         "roleId": 0
       },
-      "id": "Z754Tp8"
-    },
-    {
-      "hash": "0.14810166427781568110333410004386678338050842285156",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      },
-      "id": "hRELxuh"
-    },
-    {
-      "hash": "0.28816725618720906432201900315703824162483215332031",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      },
-      "id": "5WVNll1"
-    },
-    {
-      "hash": "0.13491944173286607444595119886798784136772155761719",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      },
-      "id": "L8_iq-N"
+      "id": 1
     }
   ]
 }

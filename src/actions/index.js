@@ -6,3 +6,4 @@ export * from "./open-modal";
 export * from "./close-modal";
 export * from "./load-product-async";
 export * from "./set-product-data";
+export * from "./set-product-in-busket";

@@ -3,7 +3,10 @@ import { Icon } from "../../../../components";
 import { useDispatch } from "react-redux";
 import { CLOSE_MODAL, openModal, setEditingProduct } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";
-import { PAGINATIONS_LIMIT } from "../../../../constants";
+import {
+	MAIN_BACKGROUND_SECOND_COLOR_THEME,
+	PAGINATIONS_LIMIT,
+} from "../../../../constants";
 import { getLastPageFromLinks } from "../../../../utils/get-last-page-from-links";
 
 const mainStyles = `
@@ -138,7 +141,7 @@ export const ProductTableRow = styled(ProductTableRowContainer)`
 	height: 120px;
 
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: ${MAIN_BACKGROUND_SECOND_COLOR_THEME};
 	margin-bottom: 10px;
 	width: 1020px;
 

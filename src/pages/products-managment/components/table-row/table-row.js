@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../constants";
 
 export const TableRowContainer = ({ className, children }) => (
 	<div className={className}>{children}</div>
@@ -15,7 +16,7 @@ export const TableRow = styled(TableRowContainer)`
 	border-radius: 5px;
 	padding: 10px;
 	border: 2px solid #000;
-	background-color: #eee;
+	background-color: ${MAIN_BACKGROUND_SECOND_COLOR_THEME};
 	margin-bottom: 10px;
 
 	& .id-column {

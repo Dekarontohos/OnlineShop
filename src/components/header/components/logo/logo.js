@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Icon } from "../../../../components";
 import { Link } from "react-router-dom";
+import { MAIN_BLACK_ELEMENT_HOVER_THEME } from "../../../../constants";
 
 const LargeText = styled.div`
 	font-size: 36px;
@@ -31,7 +32,7 @@ export const Logo = styled(LogoContainer)`
 	margin-top: -10px;
 
 	&:hover {
-		color: #5c5c5c;
+		color: ${MAIN_BLACK_ELEMENT_HOVER_THEME};
 		cursor: pointer;
 	}
 `; // шаг 1

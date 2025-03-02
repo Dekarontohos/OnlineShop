@@ -10,3 +10,4 @@ export * from "./select/select";
 export * from "./search-row/search-row";
 export * from "./modal/modal";
 export * from "./pagination/pagination";
+export * from "./sort-arrow/sort-arrow";
