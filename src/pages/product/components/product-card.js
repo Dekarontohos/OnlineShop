@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Button } from "../../../components";
 import { useDispatch } from "react-redux";
-import { setProductInBusket } from "../../../actions";
+import { setProductInBasket } from "../../../actions";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../constants";
 
 export const ProductCardContainer = ({ className, product }) => {
 	const dispatch = useDispatch();
 
 	const buyOnClick = (product) => {
-		dispatch(setProductInBusket(product, false));
+		dispatch(setProductInBasket(product, false));
 	};
 
 	return (

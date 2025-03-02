@@ -49,7 +49,7 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 		[],
 	);
 
-	const startDelayedSort = useMemo(() => debounce(setShouldSearch, 100), []);
+	const startDelayed = useMemo(() => debounce(setShouldSearch, 100), []);
 
 	const onSearch = ({ target }) => {
 		setSearchPhrase(target.value);
@@ -59,20 +59,20 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 	const categoryOnClick = (id) => {
 		if (id === filterCategory?.id) {
 			setFilterCategory(null);
-			startDelayedSearch(!shouldSearch);
+			startDelayed(!shouldSearch);
 		} else {
 			const selectedCategories = categories.filter(
 				(category) => category.id === id,
 			)[0];
 			setFilterCategory(selectedCategories);
-			startDelayedSearch(!shouldSearch);
+			startDelayed(!shouldSearch);
 		}
 	};
 
 	const sortOnClick = () => {
 		let sortingType = sort === "" ? "+" : sort === "+" ? "-" : "";
 		setSort(sortingType);
-		startDelayedSort(!shouldSearch);
+		startDelayed(!shouldSearch);
 	};
 
 	return (

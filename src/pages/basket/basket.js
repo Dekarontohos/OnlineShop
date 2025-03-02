@@ -1,22 +1,23 @@
 import { styled } from "styled-components";
 import { Content, H2 } from "../../components";
 import { useEffect, useState } from "react";
-import { ProductInBusketView } from "./components/products-in-busket-view/products-in-busket-view";
+import { ProductInBasketView } from "./components/products-in-basket-view/products-in-basket-view";
 import { useSelector } from "react-redux";
-import { selectProductsInBusket } from "../../Redux/selectors";
+import { selectProductsInBasket } from "../../Redux/selectors";
+import { FunctionalPanel } from "./components/products-in-basket-view/functional-panel/functional-panel";
 
 const BasketContainer = ({ className }) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [sort, setSort] = useState("");
-	const productsInBusket = useSelector(selectProductsInBusket);
-	const [filteredProductsInBusket, setFiltredProductsInBusket] =
-		useState(productsInBusket);
+	const productsInBasket = useSelector(selectProductsInBasket);
+	const [filteredProductsInBasket, setFiltredProductsInBasket] =
+		useState(productsInBasket);
 	const [stateFilterName, setstateFilterName] = useState("");
 
 	useEffect(() => {
 		filtersProduct();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [productsInBusket, sort, stateFilterName]);
+	}, [productsInBasket, sort, stateFilterName]);
 
 	const getSort = (arrayForSort, sortingType) => {
 		if (sortingType === "+") {
@@ -38,7 +39,7 @@ const BasketContainer = ({ className }) => {
 		const locFilterName = valuefilterName
 			? valuefilterName
 			: stateFilterName;
-		const filterResult = productsInBusket.filter((product) => {
+		const filterResult = productsInBasket.filter((product) => {
 			const matchesName =
 				locFilterName === "" ||
 				product.name
@@ -47,7 +48,7 @@ const BasketContainer = ({ className }) => {
 			return matchesName;
 		});
 		getSort(filterResult, sort);
-		setFiltredProductsInBusket(filterResult);
+		setFiltredProductsInBasket(filterResult);
 	};
 
 	const filterNameOnChange = (event) => {
@@ -59,7 +60,7 @@ const BasketContainer = ({ className }) => {
 	const sorting = () => {
 		let sortingType = sort === "" ? "+" : sort === "+" ? "-" : "";
 		setSort(sortingType);
-		let sortProducts = filteredProductsInBusket;
+		let sortProducts = filteredProductsInBasket;
 		getSort(sortProducts, sortingType);
 	};
 
@@ -69,15 +70,18 @@ const BasketContainer = ({ className }) => {
 				<H2 className={"header"} margin={"40px 0"}>
 					Корзина
 				</H2>
-				<div>
-					<ProductInBusketView
+				<div style={{ display: "flex" }}>
+					<ProductInBasketView
 						className="product-view"
-						products={filteredProductsInBusket}
+						products={filteredProductsInBasket}
 						sort={sort}
 						setSort={setSort}
 						sortOnClick={sorting}
 						filterNameOnChange={filterNameOnChange}
-					></ProductInBusketView>
+					></ProductInBasketView>
+					<FunctionalPanel
+						productsInBasket={productsInBasket}
+					></FunctionalPanel>
 				</div>
 			</Content>
 		</div>
@@ -86,4 +90,9 @@ const BasketContainer = ({ className }) => {
 
 export const Basket = styled(BasketContainer)`
 	font-size: 18px;
+
+	& .product-view {
+		display: flex;
+		margin-left: 350px;
+	}
 `;

@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Button, SearchRow, SortArrow } from "../../../../components";
 import { forwardRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { ProductInBusketElement } from "./product-in-busket-element/product-in-busket-element";
+import { ProductInBasketElement } from "./product-in-basket-element/product-in-basket-element";
 
-const ProductInBusketViewContainer = forwardRef(
+const ProductInBasketViewContainer = forwardRef(
 	(
 		{ className, products, sort, setSort, sortOnClick, filterNameOnChange },
 		ref,
@@ -56,10 +56,10 @@ const ProductInBusketViewContainer = forwardRef(
 				{products.length ? (
 					<div className="products-cells">
 						{products.map((product) => (
-							<ProductInBusketElement
+							<ProductInBasketElement
 								key={product.id}
 								product={product}
-							></ProductInBusketElement>
+							></ProductInBasketElement>
 						))}
 					</div>
 				) : (
@@ -70,7 +70,7 @@ const ProductInBusketViewContainer = forwardRef(
 	},
 );
 
-export const ProductInBusketView = styled(ProductInBusketViewContainer)`
+export const ProductInBasketView = styled(ProductInBasketViewContainer)`
 	border-radius: 5px;
 	align-items: center;
 	flex-direction: column;
@@ -78,6 +78,7 @@ export const ProductInBusketView = styled(ProductInBusketViewContainer)`
 	text-align: center;
 	height: max-content;
 	width: 800px;
+	margin-right: 10px;
 
 	& .products-cells {
 		overflow-y: auto;

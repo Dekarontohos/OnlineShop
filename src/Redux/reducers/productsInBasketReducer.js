@@ -8,7 +8,7 @@ export const productsInBasketReducer = (
 	action,
 ) => {
 	switch (action.type) {
-		case ACTION_TYPE.SET_PRODUCT_IN_BUSKET: {
+		case ACTION_TYPE.SET_PRODUCT_IN_BASKET: {
 			let newState;
 			const existingProduct = state.find(
 				(product) => product.id === action.payload.product.id,
@@ -32,10 +32,15 @@ export const productsInBasketReducer = (
 			localStorage.setItem("productsInBasket", JSON.stringify(newState));
 			return newState;
 		}
-		case ACTION_TYPE.DELETE_PRODUCT_IN_BUSKET: {
+		case ACTION_TYPE.DELETE_PRODUCT_IN_BASKET: {
 			const newState = state.filter(
 				(product) => product.id !== action.payload,
 			);
+			localStorage.setItem("productsInBasket", JSON.stringify(newState));
+			return newState;
+		}
+		case ACTION_TYPE.CLEARE_BASKET: {
+			const newState = [];
 			localStorage.setItem("productsInBasket", JSON.stringify(newState));
 			return newState;
 		}

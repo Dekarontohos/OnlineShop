@@ -6,5 +6,5 @@ export const createSession = (hash, user) => {
 			hash,
 			user,
 		}),
-	}).then((createdProduct) => createdProduct.json());
+	}).then((createdSessions) => createdSessions.json());
 };

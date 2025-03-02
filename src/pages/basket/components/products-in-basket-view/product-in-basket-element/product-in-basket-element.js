@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Icon } from "../../../../../components";
 import { useDispatch } from "react-redux";
-import { deleteProductInBusket } from "../../../../../actions/delete-product-in-busket";
+import { deleteProductInBasket } from "../../../../../actions/delete-product-in-basket";
 import QuantityChanger from "./quantity-changer/quantity-changer";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../../constants";
 
@@ -11,11 +11,16 @@ const StyledDiv = styled.div`
 	margin-bottom: 10px;
 `;
 
-const ProductInBusketElementContainer = ({ className, product }) => {
+const StyledLabel = styled.div`
+	padding-right: 10px;
+	font-weight: 500;
+`;
+
+const ProductInBasketElementContainer = ({ className, product }) => {
 	const dispatch = useDispatch();
 
-	const deleteFromBusketOnClick = (id) => {
-		dispatch(deleteProductInBusket(id));
+	const deleteFromBasketOnClick = (id) => {
+		dispatch(deleteProductInBasket(id));
 	};
 
 	return (
@@ -28,30 +33,22 @@ const ProductInBusketElementContainer = ({ className, product }) => {
 			/>
 			<div style={{ margin: "0 0 0 10px" }}>
 				<StyledDiv>
-					<label style={{ paddingRight: "10px", fontWeight: "500" }}>
-						id товара:
-					</label>
+					<StyledLabel>id товара:</StyledLabel>
 					<label>{product.id}</label>
 				</StyledDiv>
 				<StyledDiv>
-					<label style={{ paddingRight: "10px", fontWeight: "500" }}>
-						Наименование:
-					</label>
+					<StyledLabel>Наименование:</StyledLabel>
 					<label>{product.name}</label>
 				</StyledDiv>
 				<StyledDiv>
-					<label style={{ paddingRight: "10px", fontWeight: "500" }}>
-						Количество:
-					</label>
+					<StyledLabel>Количество:</StyledLabel>
 					<QuantityChanger
 						product={product}
 						initialQuantity={product.quantity}
 					></QuantityChanger>
 				</StyledDiv>
 				<StyledDiv>
-					<label style={{ paddingRight: "10px", fontWeight: "500" }}>
-						Стоимость:
-					</label>
+					<StyledLabel>Стоимость:</StyledLabel>
 					<label>{product.price}</label>
 				</StyledDiv>
 			</div>
@@ -63,13 +60,13 @@ const ProductInBusketElementContainer = ({ className, product }) => {
 				position="absolute"
 				top="10px"
 				right="30px"
-				onClick={() => deleteFromBusketOnClick(product.id)}
+				onClick={() => deleteFromBasketOnClick(product.id)}
 			></Icon>
 		</div>
 	);
 };
 
-export const ProductInBusketElement = styled(ProductInBusketElementContainer)`
+export const ProductInBasketElement = styled(ProductInBasketElementContainer)`
 	display: flex;
 	padding: 10px;
 	position: relative;

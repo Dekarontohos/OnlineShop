@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { setProductInBusket } from "../../../../../../actions";
+import { setProductInBasket } from "../../../../../../actions";
 import { MAIN_BLACK_ELEMENT_HOVER_THEME } from "../../../../../../constants";
 
 const QuantityContainer = styled.div`
@@ -30,12 +30,12 @@ const QuantityChanger = ({ product, initialQuantity }) => {
 	const dispatch = useDispatch();
 
 	const handleIncrease = () => {
-		dispatch(setProductInBusket(product, false));
+		dispatch(setProductInBasket(product, false));
 	};
 
 	const handleDecrease = () => {
 		if (initialQuantity > 1) {
-			dispatch(setProductInBusket(product, true));
+			dispatch(setProductInBasket(product, true));
 		}
 	};
 

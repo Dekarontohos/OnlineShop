@@ -21,15 +21,15 @@
   ],
   "roles": [
     {
-      "id": "0",
+      "id": 0,
       "name": "Администратор"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Пользователь"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Гость"
     }
   ],
@@ -373,7 +373,7 @@
     {
       "id": "90f7",
       "name": "игasdassadas dasdhasjdjashdaskd asdhkasdasdashdjas asjdhasidiasdiuasd asdasdasd asdasdasdasdas asdasdasdasdas asdasdasdasdas asdasdasdasdas asdasdasdasd",
-      "category": 2,
+      "category": "2",
       "price": 28999,
       "count": 15,
       "image_url": "http://dummyimage.com/500"
@@ -407,7 +407,7 @@
   ],
   "sessions": [
     {
-      "hash": "0.48331545663592456740786929003661498427391052246094",
+      "hash": "0.71125116339828386990973285719519481062889099121094",
       "user": {
         "id": "0",
         "login": "Admin",
@@ -415,6 +415,84 @@
         "roleId": 0
       },
       "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "user": "0",
+      "orderTime": "2025-03-02T18:34:04.157Z",
+      "totalAmount": 152989,
+      "totalQuantity": 11,
+      "id": 1
+    },
+    {
+      "user": "0",
+      "orderTime": "2025-03-02T18:35:28.874Z",
+      "totalAmount": 122496,
+      "totalQuantity": 4,
+      "id": 2
+    }
+  ],
+  "orders_items": [
+    {
+      "id": "1",
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 3,
+      "order_id": 1
+    },
+    {
+      "id": "8",
+      "name": "Смарт-часы Garmin",
+      "category": "3",
+      "price": 15999,
+      "count": 35,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 5,
+      "order_id": 1
+    },
+    {
+      "id": "7",
+      "name": "Ноутбук Asus",
+      "category": "2",
+      "price": 59999,
+      "count": 8,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "order_id": 1
+    },
+    {
+      "id": "6",
+      "name": "Клавиатура игровая",
+      "category": "1",
+      "price": 1999,
+      "count": 40,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 2,
+      "order_id": 1
+    },
+    {
+      "id": "15",
+      "name": "Сушильная машина",
+      "category": "4",
+      "price": 39999,
+      "count": 12,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 3,
+      "order_id": 2
+    },
+    {
+      "id": "12",
+      "name": "Электрочайник",
+      "category": "4",
+      "price": 2499,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "order_id": 2
     }
   ]
 }

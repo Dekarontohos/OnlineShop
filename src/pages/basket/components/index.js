@@ -1,2 +1,2 @@
-export * from "./products-in-busket-view/products-in-busket-view";
+export * from "./products-in-basket-view/products-in-basket-view";
 export * from "./functional-panel/functional-panel";

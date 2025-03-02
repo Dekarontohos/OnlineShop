@@ -7,4 +7,7 @@ export * from "./select-modal-onConfirm";
 export * from "./select-modal-onCancel";
 export * from "./select-modal-isOpen";
 export * from "./select-product";
-export * from "./select-products-in-busket";
+export * from "./select-products-in-basket";
+export * from "./select-total-basket-price";
+export * from "./select-total-basket-quantity";
+export * from "./select-user-id";
