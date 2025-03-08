@@ -3,11 +3,7 @@ import { sessions } from "../sessions";
 import { createOrder } from "../api";
 
 export const addOrder = async (hash, orderData) => {
-	const accessRoles = [ROLE.ADMIN, ROLE.USER];
-
-	const access = await sessions.access(hash, accessRoles);
-
-	if (!access) {
+	if (hash === null) {
 		return { error: "Необходимо авторизоваться.", response: null };
 	}
 

@@ -34,18 +34,19 @@ const FunctionalPanelContainer = forwardRef(
 				totalAmount: totalSum,
 				totalQuantity: totalQuantity,
 			};
-			//const [id, ...newProductsInBasket] = productsInBasket;
 
 			const newProductsInBasket = productsInBasket.map(
 				({ id, ...rest }) => ({ ...rest, product_id: id }),
 			);
-			console.log(newProductsInBasket);
+
 			const orderItemsData = newProductsInBasket;
 			requestServer("addOrder", { orderData, orderItemsData }).then(
 				(result) => {
 					if (result.response === "success") {
 						dispatch(cleareBasket());
 						alert("Заказ создан.");
+					} else {
+						alert(result.error);
 					}
 				},
 			);
@@ -85,6 +86,7 @@ const FunctionalPanelContainer = forwardRef(
 					fontSize={"20px;"}
 					height={"50px;"}
 					margin={"auto 0"}
+					disabled={!totalQuantity}
 					onClick={() => {
 						createOrder();
 					}}

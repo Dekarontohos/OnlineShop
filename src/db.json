@@ -415,16 +415,6 @@
         "roleId": 0
       },
       "id": 1
-    },
-    {
-      "hash": "0.63998319573220419087533628044184297323226928710938",
-      "user": {
-        "id": "0",
-        "login": "Admin",
-        "password": "123456",
-        "roleId": 0
-      },
-      "id": 2
     }
   ],
   "orders": [
@@ -441,6 +431,13 @@
       "totalAmount": 119998,
       "totalQuantity": 2,
       "id": "Ssq1DLH"
+    },
+    {
+      "user": "0",
+      "orderTime": "2025-03-08T20:19:26.185Z",
+      "totalAmount": 2999,
+      "totalQuantity": 1,
+      "id": "rdOuIgD"
     }
   ],
   "orders_items": [
@@ -487,6 +484,17 @@
       "product_id": "7",
       "order_id": "Ssq1DLH",
       "id": "GYQC8yE"
+    },
+    {
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "1",
+      "order_id": "rdOuIgD",
+      "id": "0hX_-Tf"
     }
   ]
 }

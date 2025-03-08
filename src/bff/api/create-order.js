@@ -11,8 +11,6 @@ export const createOrder = async (data) => {
 
 	const createdOrder = await createdOrderResponse.json();
 
-	console.log(data.orderItemsData);
-
 	const orderItemsPromises = data.orderItemsData.map((item) => {
 		return fetch("http://localhost:3005/orders_items", {
 			method: "POST",
@@ -28,7 +26,6 @@ export const createOrder = async (data) => {
 
 	const createdOrderItems = await Promise.all(
 		createdOrderItemsResponses.map((response) => {
-			console.log(response);
 			if (!response.ok) {
 				throw new Error("Ошибка при создании элемента заказа");
 			}
