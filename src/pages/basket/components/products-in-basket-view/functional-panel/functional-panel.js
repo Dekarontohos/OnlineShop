@@ -34,7 +34,13 @@ const FunctionalPanelContainer = forwardRef(
 				totalAmount: totalSum,
 				totalQuantity: totalQuantity,
 			};
-			const orderItemsData = productsInBasket;
+			//const [id, ...newProductsInBasket] = productsInBasket;
+
+			const newProductsInBasket = productsInBasket.map(
+				({ id, ...rest }) => ({ ...rest, product_id: id }),
+			);
+			console.log(newProductsInBasket);
+			const orderItemsData = newProductsInBasket;
 			requestServer("addOrder", { orderData, orderItemsData }).then(
 				(result) => {
 					if (result.response === "success") {

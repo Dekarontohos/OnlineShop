@@ -1,7 +1,9 @@
 import { setProductData } from "./set-product-data";
 
-export const loadProductAsync = (requestServer, productId) => (dispatch) => {
+export const loadProductAsync = (requestServer, productId) => (dispatch) =>
 	requestServer("fetchProduct", productId).then((productData) => {
-		dispatch(setProductData(productData.response));
+		if (productData.response) {
+			dispatch(setProductData(productData.response));
+		}
+		return productData;
 	});
-};

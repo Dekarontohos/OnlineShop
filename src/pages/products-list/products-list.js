@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useState, useMemo } from "react";
-import { Content, H2, Pagination } from "../../components";
+import { PrivateContent, H2, Pagination } from "../../components";
 import styled from "styled-components";
 import { useServerRequest } from "../../hooks";
 import { FilterCategoryBlock, ProductView } from "./components";
@@ -77,7 +77,7 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 
 	return (
 		<div className={className} ref={ref}>
-			<Content error={errorMessage}>
+			<PrivateContent serverError={errorMessage}>
 				<H2 className={"header"} margin={"40px 0"}>
 					Список продуктов
 				</H2>
@@ -116,7 +116,7 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 							lastPage={lastPage}
 						></Pagination>
 					)}
-			</Content>
+			</PrivateContent>
 		</div>
 	);
 });

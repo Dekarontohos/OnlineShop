@@ -8,12 +8,10 @@ const Div = styled.div`
 	justify-content: center;
 `;
 
-export const Content = ({ children, error }) =>
-	error ? (
+export const Error = ({ error }) =>
+	error && (
 		<Div>
 			<H2>Ошибка</H2>
 			<div>{error}</div>
 		</Div>
-	) : (
-		<Div>{children}</Div>
 	);

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Content, H2 } from "../../components";
+import { PrivateContent, H2 } from "../../components";
 import { useEffect, useState } from "react";
 import { ProductInBasketView } from "./components/products-in-basket-view/products-in-basket-view";
 import { useSelector } from "react-redux";
@@ -66,7 +66,7 @@ const BasketContainer = ({ className }) => {
 
 	return (
 		<div className={className}>
-			<Content error={errorMessage}>
+			<PrivateContent serverError={errorMessage}>
 				<H2 className={"header"} margin={"40px 0"}>
 					Корзина
 				</H2>
@@ -83,16 +83,20 @@ const BasketContainer = ({ className }) => {
 						productsInBasket={productsInBasket}
 					></FunctionalPanel>
 				</div>
-			</Content>
+			</PrivateContent>
 		</div>
 	);
 };
 
 export const Basket = styled(BasketContainer)`
 	font-size: 18px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 auto;
 
 	& .product-view {
 		display: flex;
-		margin-left: 350px;
+		margin-left: 370px;
 	}
 `;

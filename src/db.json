@@ -261,9 +261,9 @@
     {
       "id": "8664",
       "name": "Телевизор",
-      "category": "1",
+      "category": 1,
       "price": 1,
-      "count": 1,
+      "count": 20,
       "image_url": "1"
     },
     {
@@ -415,84 +415,78 @@
         "roleId": 0
       },
       "id": 1
+    },
+    {
+      "hash": "0.63998319573220419087533628044184297323226928710938",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      },
+      "id": 2
     }
   ],
   "orders": [
     {
       "user": "0",
-      "orderTime": "2025-03-02T18:34:04.157Z",
-      "totalAmount": 152989,
-      "totalQuantity": 11,
-      "id": 1
+      "orderTime": "2025-03-08T19:49:57.063Z",
+      "totalAmount": 52997,
+      "totalQuantity": 3,
+      "id": "123"
     },
     {
       "user": "0",
-      "orderTime": "2025-03-02T18:35:28.874Z",
-      "totalAmount": 122496,
-      "totalQuantity": 4,
-      "id": 2
+      "orderTime": "2025-03-08T19:51:20.564Z",
+      "totalAmount": 119998,
+      "totalQuantity": 2,
+      "id": "Ssq1DLH"
     }
   ],
   "orders_items": [
     {
-      "id": "1",
+      "name": "Фитнес-браслет",
+      "category": "3",
+      "price": 6999,
+      "count": 25,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "3",
+      "order_id": 1,
+      "id": "123"
+    },
+    {
       "name": "Наушники Sony",
       "category": "1",
       "price": 2999,
       "count": 50,
       "image_url": "http://dummyimage.com/500",
-      "quantity": 3,
-      "order_id": 1
+      "quantity": 1,
+      "product_id": "1",
+      "order_id": 1,
+      "id": "123"
     },
     {
-      "id": "8",
-      "name": "Смарт-часы Garmin",
-      "category": "3",
-      "price": 15999,
-      "count": 35,
+      "name": "Планшет Samsung",
+      "category": "2",
+      "price": 42999,
+      "count": 30,
       "image_url": "http://dummyimage.com/500",
-      "quantity": 5,
-      "order_id": 1
+      "quantity": 1,
+      "product_id": "2",
+      "order_id": 1,
+      "id": "123"
     },
     {
-      "id": "7",
       "name": "Ноутбук Asus",
       "category": "2",
       "price": 59999,
       "count": 8,
       "image_url": "http://dummyimage.com/500",
-      "quantity": 1,
-      "order_id": 1
-    },
-    {
-      "id": "6",
-      "name": "Клавиатура игровая",
-      "category": "1",
-      "price": 1999,
-      "count": 40,
-      "image_url": "http://dummyimage.com/500",
       "quantity": 2,
-      "order_id": 1
-    },
-    {
-      "id": "15",
-      "name": "Сушильная машина",
-      "category": "4",
-      "price": 39999,
-      "count": 12,
-      "image_url": "http://dummyimage.com/500",
-      "quantity": 3,
-      "order_id": 2
-    },
-    {
-      "id": "12",
-      "name": "Электрочайник",
-      "category": "4",
-      "price": 2499,
-      "count": 50,
-      "image_url": "http://dummyimage.com/500",
-      "quantity": 1,
-      "order_id": 2
+      "product_id": "7",
+      "order_id": "Ssq1DLH",
+      "id": "GYQC8yE"
     }
   ]
 }

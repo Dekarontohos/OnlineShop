@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
-import { Header, Modal } from "./components";
+import { Header, Modal, Error } from "./components";
 import {
 	Authorization,
 	ProductsManagment,
@@ -13,6 +13,7 @@ import {
 import "./App.css";
 import { setUser } from "./actions";
 import { useDispatch } from "react-redux";
+import { ERROR } from "./constants";
 
 const Page = styled.div`
 	padding: 120px 0 0 0;
@@ -61,7 +62,10 @@ export const OnlineShop = () => {
 						path="/productsManagment"
 						element={<ProductsManagment />}
 					/>
-					<Route path="*" element={<div>Ошибка</div>} />
+					<Route
+						path="*"
+						element={<Error error={ERROR.PAGE_NOT_EXIST}></Error>}
+					/>
 				</Routes>
 			</Page>
 			<Modal />

@@ -1,4 +1,4 @@
-import { Content, H2, Pagination } from "../../components";
+import { PrivateContent, H2, Pagination } from "../../components";
 import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
 import { ProductTableRow, TableRow, EditingBlock } from "./components";
 import { useServerRequest } from "../../hooks";
@@ -6,10 +6,13 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { selectEditingProduct } from "../../Redux/selectors";
 import { setEditingProduct } from "../../actions";
-import { PAGINATIONS_LIMIT } from "../../constants";
+import { PAGINATIONS_LIMIT, ROLE } from "../../constants";
 import { getLastPageFromLinks } from "../../utils/get-last-page-from-links";
+import { checkAccess } from "../../utils";
+import { selectUserRole } from "../../Redux/selectors";
 
 const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
+	const userRole = useSelector(selectUserRole);
 	const [products, setProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -33,6 +36,10 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	);
 
 	useEffect(() => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
+
 		Promise.all([
 			requestServer("fetchProducts", page, PAGINATIONS_LIMIT),
 			requestServer("fetchCategories"),
@@ -50,7 +57,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 			setCategories(categoriesResponse.response);
 			setLastPage(getLastPageFromLinks(productsResponse.response.links));
 		});
-	}, [requestServer, page]);
+	}, [requestServer, page, userRole]);
 
 	const clearEditingProduct = useCallback(() => {
 		dispatch(
@@ -74,7 +81,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 
 	return (
 		<div className={className} ref={ref}>
-			<Content error={errorMessage}>
+			<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
 				<H2 className={"header"} margin={"40px 0"}>
 					Управление продуктами
 				</H2>
@@ -157,7 +164,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 							)}
 					</div>
 				</div>
-			</Content>
+			</PrivateContent>
 		</div>
 	);
 });
