@@ -3,6 +3,7 @@ import { Button } from "../../../components";
 import { useDispatch } from "react-redux";
 import { setProductInBasket } from "../../../actions";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../constants";
+import PropTypes from "prop-types";
 
 export const ProductCardContainer = ({ className, product }) => {
 	const dispatch = useDispatch();
@@ -107,3 +108,7 @@ export const ProductCard = styled(ProductCardContainer)`
 	text-align: center;
 	justify-content: space-between;
 `;
+
+ProductCard.propTypes = {
+	product: PropTypes.object,
+};

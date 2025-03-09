@@ -3,6 +3,7 @@ import { Button, SearchRow, SortArrow } from "../../../../components";
 import { forwardRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ProductInBasketElement } from "./product-in-basket-element/product-in-basket-element";
+import PropTypes from "prop-types";
 
 const ProductInBasketViewContainer = forwardRef(
 	(
@@ -87,3 +88,11 @@ export const ProductInBasketView = styled(ProductInBasketViewContainer)`
 		max-width: 800px;
 	}
 `;
+
+ProductInBasketView.propTypes = {
+	products: PropTypes.array,
+	sort: PropTypes.string,
+	setSort: PropTypes.func,
+	sortOnClick: PropTypes.func,
+	filterNameOnChange: PropTypes.func,
+};

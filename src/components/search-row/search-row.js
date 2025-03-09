@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { MAIN_THEME } from "../../constants";
 
@@ -14,7 +15,6 @@ const Div = styled.div`
 `;
 
 const SearchRowContainer = ({
-	children,
 	className,
 	searchPhrase,
 	onChange,
@@ -27,9 +27,7 @@ const SearchRowContainer = ({
 			placeholder="Поиск по имени"
 			value={searchPhrase}
 			onChange={onChange}
-		>
-			{children}
-		</input>
+		></input>
 	</Div>
 );
 
@@ -42,3 +40,8 @@ export const SearchRow = styled(SearchRowContainer)`
 	padding: 10px;
 	width: 80%;
 `;
+
+SearchRow.propTypesropTypes = {
+	searchPhrase: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+};

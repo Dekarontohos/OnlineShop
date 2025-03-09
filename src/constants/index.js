@@ -2,3 +2,4 @@ export * from "./role";
 export * from "./color-themes";
 export * from "./paginations-limit";
 export * from "./errors";
+export * from "./prop-types";

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Icon } from "../icon/icon";
 
@@ -18,3 +19,7 @@ const SortArrowContainer = ({ className, sort }) => {
 };
 
 export const SortArrow = styled(SortArrowContainer)``;
+
+SortArrow.propTypesropTypes = {
+	sort: PropTypes.string.isRequired,
+};

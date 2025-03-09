@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { MAIN_BLACK_ELEMENT_HOVER_THEME } from "../../constants";
 
@@ -23,3 +24,7 @@ export const Icon = styled(IconContainer)`
 		cursor: pointer;
 	}
 `;
+
+Icon.propTypesropTypes = {
+	id: PropTypes.string.isRequired,
+};

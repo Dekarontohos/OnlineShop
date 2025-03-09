@@ -8,6 +8,7 @@ import {
 	PAGINATIONS_LIMIT,
 } from "../../../../constants";
 import { getLastPageFromLinks } from "../../../../utils/get-last-page-from-links";
+import PropTypes from "prop-types";
 
 const mainStyles = `
 		font-size: 20px;
@@ -44,7 +45,7 @@ const ProductTableRowContainer = ({
 	const editOnClick = (product) => {
 		setProductState({
 			name: "",
-			category: 0,
+			category: "",
 			price: 0,
 			count: 0,
 			image_url: "",
@@ -185,3 +186,21 @@ export const ProductTableRow = styled(ProductTableRowContainer)`
 		margin: auto 20px auto 0;
 	}
 `;
+
+ProductTableRow.propTypesropTypes = {
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	category: PropTypes.string.isRequired,
+	price: PropTypes.number.isRequired,
+	count: PropTypes.number.isRequired,
+	image_url: PropTypes.string.isRequired,
+	categories: PropTypes.array.isRequired,
+	product: PropTypes.object.isRequired,
+	products: PropTypes.array.isRequired,
+	setProducts: PropTypes.func.isRequired,
+	clearEditingProduct: PropTypes.func.isRequired,
+	setProductState: PropTypes.func.isRequired,
+	page: PropTypes.number.isRequired,
+	setLastPage: PropTypes.number.isRequired,
+	setPage: PropTypes.func.isRequired,
+};

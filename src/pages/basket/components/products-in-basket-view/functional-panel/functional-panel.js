@@ -10,6 +10,7 @@ import {
 } from "../../../../../Redux/selectors";
 import { useServerRequest } from "../../../../../hooks";
 import { cleareBasket } from "../../../../../actions";
+import PropTypes from "prop-types";
 
 const StyledLabel1 = styled.div`
 	font-size: 26px;
@@ -110,3 +111,7 @@ export const FunctionalPanel = styled(FunctionalPanelContainer)`
 	text-align: center;
 	background-color: ${MAIN_BACKGROUND_SECOND_COLOR_THEME};
 `;
+
+FunctionalPanel.propTypes = {
+	productsInBasket: PropTypes.array,
+};

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { setProductInBasket } from "../../../../../../actions";
 import { MAIN_BLACK_ELEMENT_HOVER_THEME } from "../../../../../../constants";
+import PropTypes from "prop-types";
 
 const QuantityContainer = styled.div`
 	display: flex;
@@ -41,7 +42,7 @@ const QuantityChanger = ({ product, initialQuantity }) => {
 
 	return (
 		<QuantityContainer>
-			<Button onClick={handleDecrease}>−</Button>
+			<Button onClick={handleDecrease}>-</Button>
 			<QuantityDisplay>{initialQuantity}</QuantityDisplay>
 			<Button onClick={handleIncrease}>+</Button>
 		</QuantityContainer>
@@ -49,3 +50,8 @@ const QuantityChanger = ({ product, initialQuantity }) => {
 };
 
 export default QuantityChanger;
+
+QuantityChanger.propTypesropTypes = {
+	product: PropTypes.object.isRequired,
+	initialQuantity: PropTypes.number.isRequired,
+};

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../constants";
+import PropTypes from "prop-types";
 
 export const TableRowContainer = ({ className, children }) => (
 	<div className={className}>{children}</div>
@@ -53,3 +54,7 @@ export const TableRow = styled(TableRowContainer)`
 		${mainStyles}
 	}
 `;
+
+TableRow.propTypesropTypes = {
+	id: PropTypes.node.isRequired,
+};

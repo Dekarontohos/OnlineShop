@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Button, H2 } from "../../../../components";
 import { forwardRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { MAIN_ACTIVE_BUTTON_COLOR_THEME } from "../../../../constants";
+import PropTypes from "prop-types";
 
 const FilterCategoryBlockContainer = forwardRef(
 	(
@@ -34,8 +36,10 @@ const FilterCategoryBlockContainer = forwardRef(
 						height={"60px"}
 						margin={"0 0 20px 0"}
 						onClick={() => categoryOnClick(id)}
-						backgroundColor={() =>
-							id === filterCategory?.id ? "#a9a9a9" : ""
+						backgroundColor={
+							id === filterCategory?.id
+								? MAIN_ACTIVE_BUTTON_COLOR_THEME
+								: ""
 						}
 					>
 						<span>{name}</span>
@@ -58,3 +62,10 @@ export const FilterCategoryBlock = styled(FilterCategoryBlockContainer)`
 	text-align: center;
 	height: max-content;
 `;
+
+FilterCategoryBlock.propTypesropTypes = {
+	categories: PropTypes.array.isRequired,
+	filterCategory: PropTypes.object,
+	setFilterCategory: PropTypes.func.isRequired,
+	categoryOnClick: PropTypes.func.isRequired,
+};

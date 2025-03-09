@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Button } from "../../../../../components";
 import { useNavigate } from "react-router-dom";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../../constants";
+import PropTypes from "prop-types";
 
 const StyledDiv = styled.div`
 	display: flex;
@@ -68,3 +69,10 @@ export const ProductElement = styled(ProductElementContainer)`
 	background-color: ${MAIN_BACKGROUND_SECOND_COLOR_THEME};
 	margin-bottom: 10px;
 `;
+
+ProductElement.propTypesropTypes = {
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	price: PropTypes.string.isRequired,
+	image_url: PropTypes.string.isRequired,
+};

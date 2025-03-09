@@ -7,6 +7,7 @@ import { useServerRequest } from "../../../../hooks";
 import { useLocation } from "react-router-dom";
 import { PAGINATIONS_LIMIT } from "../../../../constants";
 import { getLastPageFromLinks } from "../../../../utils/get-last-page-from-links";
+import PropTypes from "prop-types";
 
 const EditingBlockContainer = forwardRef(
 	(
@@ -244,3 +245,14 @@ export const EditingBlock = styled(EditingBlockContainer)`
 	display: flex;
 	text-align: center;
 `;
+
+EditingBlock.propTypesropTypes = {
+	categories: PropTypes.array.isRequired,
+	setProducts: PropTypes.func,
+	product: PropTypes.object,
+	productState: PropTypes.object,
+	setProductState: PropTypes.func,
+	clearEditingProduct: PropTypes.func,
+	page: PropTypes.number,
+	setLastPage: PropTypes.number,
+};

@@ -3,6 +3,7 @@ import { Button, SearchRow, SortArrow } from "../../../../components";
 import { forwardRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ProductElement } from "./product-element/product-element";
+import PropTypes from "prop-types";
 
 const ProductViewContainer = forwardRef(
 	(
@@ -84,3 +85,12 @@ export const ProductView = styled(ProductViewContainer)`
 		max-width: 800px;
 	}
 `;
+
+ProductView.propTypesropTypes = {
+	products: PropTypes.array.isRequired,
+	sort: PropTypes.string,
+	setSort: PropTypes.func,
+	sortOnClick: PropTypes.func,
+	searchPhrase: PropTypes.func,
+	onSearch: PropTypes.func,
+};

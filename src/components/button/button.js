@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import {
 	MAIN_BACKGROUND_SECOND_COLOR_THEME,
@@ -42,3 +43,12 @@ export const Button = styled(ButtonContainer)`
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	}
 `;
+
+Button.propTypes = {
+	children: PropTypes.node.isRequired,
+	width: PropTypes.string,
+	fontSize: PropTypes.string,
+	height: PropTypes.string,
+	margin: PropTypes.string,
+	backgroundColor: PropTypes.string,
+};

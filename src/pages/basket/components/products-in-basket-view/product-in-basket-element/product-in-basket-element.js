@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteProductInBasket } from "../../../../../actions/delete-product-in-basket";
 import QuantityChanger from "./quantity-changer/quantity-changer";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../../constants";
+import PropTypes from "prop-types";
 
 const StyledDiv = styled.div`
 	text-align: left;
@@ -78,3 +79,7 @@ export const ProductInBasketElement = styled(ProductInBasketElementContainer)`
 	background-color: ${MAIN_BACKGROUND_SECOND_COLOR_THEME};
 	margin-bottom: 10px;
 `;
+
+ProductInBasketElement.propTypes = {
+	product: PropTypes.object,
+};

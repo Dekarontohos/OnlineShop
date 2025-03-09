@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { forwardRef } from "react";
 import styled from "styled-components";
 
@@ -16,3 +17,7 @@ export const Select = styled(SelectContainer)`
 	overflow: hidden;
 	text-align: center;
 `;
+
+Select.propTypesropTypes = {
+	width: PropTypes.string,
+};

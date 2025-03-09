@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const LabelContainer = ({ children, className, ...props }) => (
@@ -11,3 +12,7 @@ export const Label = styled(LabelContainer)`
 	font-size: 18px;
 	font-weight: 600;
 `;
+
+Label.propTypesropTypes = {
+	children: PropTypes.node.isRequired,
+};
