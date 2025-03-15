@@ -21,6 +21,7 @@ const EditingBlockContainer = forwardRef(
 			clearEditingProduct,
 			page,
 			setLastPage,
+			setLoading,
 		},
 		ref,
 	) => {
@@ -94,19 +95,27 @@ const EditingBlockContainer = forwardRef(
 				alert("Необходимо указать категорию.");
 				return;
 			}
-			requestServer("addProduct", productState).then((result) => {
-				if (result.response === "success") {
-					alert("Продукт добавлен.");
-				}
-				requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
-					(result) => {
+			setLoading(true);
+			requestServer("addProduct", productState)
+				.then((result) => {
+					if (result.response === "success") {
+						alert("Продукт добавлен.");
+					}
+					requestServer(
+						"fetchProducts",
+						page,
+						PAGINATIONS_LIMIT,
+					).then((result) => {
+						setLoading(false);
 						setProducts(result.response.products);
 						setLastPage(
 							getLastPageFromLinks(result.response.links),
 						);
-					},
-				);
-			});
+					});
+				})
+				.catch(() => {
+					setLoading(false);
+				});
 		};
 
 		const updateProduct = () => {
@@ -117,16 +126,24 @@ const EditingBlockContainer = forwardRef(
 				alert("Цена не может быть нулевой.");
 				return;
 			}
-			requestServer("changeProduct", productState).then((result) => {
-				requestServer("fetchProducts", page, PAGINATIONS_LIMIT).then(
-					(result) => {
+			setLoading(true);
+			requestServer("changeProduct", productState)
+				.then((result) => {
+					requestServer(
+						"fetchProducts",
+						page,
+						PAGINATIONS_LIMIT,
+					).then((result) => {
+						setLoading(false);
 						setProducts(result.response.products);
 						setLastPage(
 							getLastPageFromLinks(result.response.links),
 						);
-					},
-				);
-			});
+					});
+				})
+				.catch(() => {
+					setLoading(false);
+				});
 			clearEditingProduct();
 		};
 

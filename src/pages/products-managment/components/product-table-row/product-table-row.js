@@ -38,6 +38,7 @@ const ProductTableRowContainer = ({
 	page,
 	setLastPage,
 	setPage,
+	setLoading,
 }) => {
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
@@ -54,23 +55,28 @@ const ProductTableRowContainer = ({
 	};
 
 	const asyncRemoveProduct = async (id) => {
-		requestServer("removeProduct", id).then(() => {
-			requestServer(
-				"fetchProducts",
-				products.length > 1 ? page : page - 1,
-				PAGINATIONS_LIMIT,
-			).then((result) => {
-				setProducts(result.response.products);
-				// if (result.response.links) {
-
-				// }
-				const locLastPage = getLastPageFromLinks(result.response.links);
-				setLastPage(locLastPage);
-				if (page > locLastPage) {
-					setPage(locLastPage);
-				}
+		setLoading(true);
+		requestServer("removeProduct", id)
+			.then(() => {
+				requestServer(
+					"fetchProducts",
+					products.length > 1 ? page : page - 1,
+					PAGINATIONS_LIMIT,
+				).then((result) => {
+					setLoading(false);
+					setProducts(result.response.products);
+					const locLastPage = getLastPageFromLinks(
+						result.response.links,
+					);
+					setLastPage(locLastPage);
+					if (page > locLastPage) {
+						setPage(locLastPage);
+					}
+				});
+			})
+			.catch(() => {
+				setLoading(false);
 			});
-		});
 		if (id === product.id) {
 			clearEditingProduct();
 		}

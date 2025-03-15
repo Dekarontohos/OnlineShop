@@ -12,3 +12,4 @@ export * from "./modal/modal";
 export * from "./pagination/pagination";
 export * from "./sort-arrow/sort-arrow";
 export * from "./error/error";
+export * from "./loader/loader";

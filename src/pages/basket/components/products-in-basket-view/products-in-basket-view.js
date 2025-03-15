@@ -64,7 +64,7 @@ const ProductInBasketViewContainer = forwardRef(
 						))}
 					</div>
 				) : (
-					<div className="no-products-found">Продукты не найдены</div>
+					<div className="no-products-found">Корзина пуста</div>
 				)}
 			</div>
 		);

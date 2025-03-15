@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { ERROR } from "./constants";
 
 const Page = styled.div`
-	padding: 120px 0 0 0;
+	padding: 10vh 0 0 0;
 `;
 
 const AppColumn = styled.div`
@@ -26,6 +26,7 @@ const AppColumn = styled.div`
 	min-height: 100%;
 	background-color: #fff;
 	margin: 0 auto;
+	overflow: hidden;
 `;
 
 export const OnlineShop = () => {

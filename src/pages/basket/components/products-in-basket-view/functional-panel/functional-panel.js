@@ -23,12 +23,13 @@ const StyledLabel2 = styled.div`
 `;
 
 const FunctionalPanelContainer = forwardRef(
-	({ className, productsInBasket }, ref) => {
+	({ className, productsInBasket, setLoading }, ref) => {
 		const requestServer = useServerRequest();
 		const userId = useSelector(selectUserId);
 		const dispatch = useDispatch();
 
 		const createOrder = () => {
+			setLoading(true);
 			const orderData = {
 				user: userId,
 				orderTime: new Date().toISOString(),
@@ -41,16 +42,19 @@ const FunctionalPanelContainer = forwardRef(
 			);
 
 			const orderItemsData = newProductsInBasket;
-			requestServer("addOrder", { orderData, orderItemsData }).then(
-				(result) => {
+			requestServer("addOrder", { orderData, orderItemsData })
+				.then((result) => {
+					setLoading(false);
 					if (result.response === "success") {
 						dispatch(cleareBasket());
 						alert("Заказ создан.");
 					} else {
 						alert(result.error);
 					}
-				},
-			);
+				})
+				.catch(() => {
+					setLoading(false);
+				});
 		};
 
 		function getProductDeclension(count) {

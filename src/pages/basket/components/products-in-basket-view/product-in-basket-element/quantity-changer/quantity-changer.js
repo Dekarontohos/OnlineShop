@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setProductInBasket } from "../../../../../../actions";
 import { MAIN_BLACK_ELEMENT_HOVER_THEME } from "../../../../../../constants";
 import PropTypes from "prop-types";
+import { deleteProductInBasket } from "../../../../../../actions/delete-product-in-basket";
 
 const QuantityContainer = styled.div`
 	display: flex;
@@ -27,7 +28,7 @@ const QuantityDisplay = styled.span`
 	font-weight: bold;
 `;
 
-const QuantityChanger = ({ product, initialQuantity }) => {
+const QuantityChanger = ({ className, product, initialQuantity }) => {
 	const dispatch = useDispatch();
 
 	const handleIncrease = () => {
@@ -37,14 +38,20 @@ const QuantityChanger = ({ product, initialQuantity }) => {
 	const handleDecrease = () => {
 		if (initialQuantity > 1) {
 			dispatch(setProductInBasket(product, true));
+		} else {
+			dispatch(deleteProductInBasket(product.id));
 		}
 	};
 
 	return (
-		<QuantityContainer>
-			<Button onClick={handleDecrease}>-</Button>
-			<QuantityDisplay>{initialQuantity}</QuantityDisplay>
-			<Button onClick={handleIncrease}>+</Button>
+		<QuantityContainer className={className}>
+			<Button onClick={handleDecrease} className="minus">
+				-
+			</Button>
+			<QuantityDisplay>{initialQuantity} </QuantityDisplay>
+			<Button onClick={handleIncrease} className="plus">
+				+
+			</Button>
 		</QuantityContainer>
 	);
 };

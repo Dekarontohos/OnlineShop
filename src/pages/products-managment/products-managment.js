@@ -1,4 +1,4 @@
-import { PrivateContent, H2, Pagination } from "../../components";
+import { PrivateContent, H2, Pagination, Loader } from "../../components";
 import { forwardRef, useCallback, useEffect, useMemo, useState } from "react";
 import { ProductTableRow, TableRow, EditingBlock } from "./components";
 import { useServerRequest } from "../../hooks";
@@ -18,6 +18,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [page, setPage] = useState(1);
 	const [lastPage, setLastPage] = useState(1);
+	const [loading, setLoading] = useState(false);
 	const [productState, setProductState] = useState({
 		name: "",
 		category: "",
@@ -39,24 +40,32 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 		if (!checkAccess([ROLE.ADMIN], userRole)) {
 			return;
 		}
-
+		setLoading(true);
 		Promise.all([
 			requestServer("fetchProducts", page, PAGINATIONS_LIMIT),
 			requestServer("fetchCategories"),
-		]).then(([productsResponse, categoriesResponse]) => {
-			if (productsResponse.error || categoriesResponse.error) {
-				setErrorMessage(
-					productsResponse.error || categoriesResponse.error,
+		])
+			.then(([productsResponse, categoriesResponse]) => {
+				setLoading(false);
+				if (productsResponse.error || categoriesResponse.error) {
+					setErrorMessage(
+						productsResponse.error || categoriesResponse.error,
+					);
+					return;
+				}
+				productsResponse.response.products.sort((a, b) => {
+					return a.id - b.id;
+				});
+				setProducts(productsResponse.response.products);
+				setCategories(categoriesResponse.response);
+				setLastPage(
+					getLastPageFromLinks(productsResponse.response.links),
 				);
-				return;
-			}
-			productsResponse.response.products.sort((a, b) => {
-				return a.id - b.id;
+			})
+			.catch((error) => {
+				setLoading(false);
+				setErrorMessage("Ошибка при загрузке данных.");
 			});
-			setProducts(productsResponse.response.products);
-			setCategories(categoriesResponse.response);
-			setLastPage(getLastPageFromLinks(productsResponse.response.links));
-		});
 	}, [requestServer, page, userRole]);
 
 	const clearEditingProduct = useCallback(() => {
@@ -82,6 +91,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 	return (
 		<div className={className} ref={ref}>
 			<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+				<Loader isVisible={loading} />
 				<H2 className={"header"} margin={"40px 0"}>
 					Управление продуктами
 				</H2>
@@ -96,6 +106,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 						clearEditingProduct={clearEditingProduct}
 						page={page}
 						setLastPage={setLastPage}
+						setLoading={setLoading}
 					></EditingBlock>
 					<div className="table">
 						<TableRow className="table-header">
@@ -143,6 +154,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 											page={page}
 											setPage={setPage}
 											setLastPage={setLastPage}
+											setLoading={setLoading}
 										></ProductTableRow>
 									),
 								)}
@@ -190,7 +202,7 @@ export const ProductsManagment = styled(ProductsManagmentContainer)`
 	& .table-body {
 		overflow-y: auto;
 		overflow-x: hidden;
-		height: 73vh;
+		height: 72.4vh;
 		max-width: 1020px;
 	}
 

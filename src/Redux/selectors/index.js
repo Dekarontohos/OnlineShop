@@ -11,3 +11,4 @@ export * from "./select-products-in-basket";
 export * from "./select-total-basket-price";
 export * from "./select-total-basket-quantity";
 export * from "./select-user-id";
+export * from "./select-product-quantity-in-basket";

@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { server } from "../../bff";
 import { useState } from "react";
 import styled from "styled-components";
-import { Input, Button, H2, AuthFormError } from "../../components";
+import { Input, Button, H2, AuthFormError, Loader } from "../../components";
 import { Link, Navigate } from "react-router-dom";
 import { setUser } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,6 +58,7 @@ const AuthorizationContainer = ({ className }) => {
 	});
 
 	const [serverError, setServerError] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -66,14 +67,16 @@ const AuthorizationContainer = ({ className }) => {
 	useResetForm(reset);
 
 	const onSubmit = ({ login, password }) => {
+		setLoading(true);
 		server.autorize(login, password).then(({ error, response }) => {
+			setLoading(false);
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
 				return;
 			}
 
 			dispatch(setUser(response));
-			sessionStorage.setItem(`userData`, JSON.stringify(response) ); 
+			sessionStorage.setItem(`userData`, JSON.stringify(response));
 		});
 	};
 	const formError = errors?.login?.message || errors?.password?.message;
@@ -85,6 +88,7 @@ const AuthorizationContainer = ({ className }) => {
 
 	return (
 		<div className={className}>
+			<Loader isVisible={loading} />
 			<H2>Авторизация</H2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input

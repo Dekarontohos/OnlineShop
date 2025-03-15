@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { server } from "../../bff";
 import { useState } from "react";
 import styled from "styled-components";
-import { Input, Button, H2, AuthFormError } from "../../components";
+import { Input, Button, H2, AuthFormError, Loader } from "../../components";
 import { Navigate } from "react-router-dom";
 import { setUser } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -55,6 +55,7 @@ const RegistrationContainer = ({ className }) => {
 	});
 
 	const [serverError, setServerError] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -63,14 +64,16 @@ const RegistrationContainer = ({ className }) => {
 	useResetForm(reset);
 
 	const onSubmit = ({ login, password }) => {
+		setLoading(true);
 		server.register(login, password).then(({ error, response }) => {
+			setLoading(false);
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
 				return;
 			}
 
 			dispatch(setUser(response));
-			sessionStorage.setItem(`userData`, JSON.stringify(response) ); 
+			sessionStorage.setItem(`userData`, JSON.stringify(response));
 		});
 	};
 
@@ -86,6 +89,7 @@ const RegistrationContainer = ({ className }) => {
 
 	return (
 		<div className={className}>
+			<Loader isVisible={loading} />
 			<H2>Регистрация</H2>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
