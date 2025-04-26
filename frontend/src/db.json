@@ -1,0 +1,668 @@
+{
+  "users": [
+    {
+      "id": "0",
+      "login": "Admin",
+      "password": "123456",
+      "roleId": 0
+    },
+    {
+      "id": "1",
+      "login": "IvanI",
+      "password": "12345678",
+      "roleId": 1
+    },
+    {
+      "id": "37eb",
+      "login": "kola1",
+      "password": "123456",
+      "roleId": 1
+    },
+    {
+      "login": "test",
+      "password": "123456",
+      "roleId": 1,
+      "id": "7zrScE4"
+    }
+  ],
+  "roles": [
+    {
+      "id": 0,
+      "name": "Администратор"
+    },
+    {
+      "id": 1,
+      "name": "Пользователь"
+    },
+    {
+      "id": 2,
+      "name": "Гость"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "2",
+      "name": "Планшет Samsung",
+      "category": "2",
+      "price": 42999,
+      "count": 30,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "3",
+      "name": "Фитнес-браслет",
+      "category": "3",
+      "price": 6999,
+      "count": 25,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "4",
+      "name": "Микроволновая печь",
+      "category": "4",
+      "price": 14999,
+      "count": 20,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "5",
+      "name": "Игровая приставка",
+      "category": "5",
+      "price": 29999,
+      "count": 15,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "6",
+      "name": "Клавиатура игровая",
+      "category": "1",
+      "price": 1999,
+      "count": 40,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "7",
+      "name": "Ноутбук Asus",
+      "category": "2",
+      "price": 59999,
+      "count": 8,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "8",
+      "name": "Смарт-часы Garmin",
+      "category": "3",
+      "price": 15999,
+      "count": 35,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "9",
+      "name": "Электрическая плита",
+      "category": "4",
+      "price": 24999,
+      "count": 10,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "10",
+      "name": "Игровой монитор",
+      "category": "5",
+      "price": 17999,
+      "count": 18,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "11",
+      "name": "Смартфон Xiaomi",
+      "category": "2",
+      "price": 34999,
+      "count": 22,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "12",
+      "name": "Электрочайник",
+      "category": "4",
+      "price": 2499,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "13",
+      "name": "Компьютерная мышь",
+      "category": "1",
+      "price": 899,
+      "count": 70,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "14",
+      "name": "Набор для кухни",
+      "category": "6",
+      "price": 1399,
+      "count": 44,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "15",
+      "name": "Сушильная машина",
+      "category": "4",
+      "price": 39999,
+      "count": 12,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "16",
+      "name": "Игровой контроллер",
+      "category": "5",
+      "price": 3499,
+      "count": 29,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "17",
+      "name": "Планшетный компьютер",
+      "category": "2",
+      "price": 28999,
+      "count": 15,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "18",
+      "name": "Кофемашина DeLonghi",
+      "category": "6",
+      "price": 17999,
+      "count": 17,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "19",
+      "name": "Системный блок",
+      "category": "1",
+      "price": 24999,
+      "count": 13,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "20",
+      "name": "Внешний драйв USB",
+      "category": "2",
+      "price": 1999,
+      "count": 60,
+      "image_url": "http://dummyimage.com/500"
+    },
+    {
+      "id": "0edc",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "sdsdf"
+    },
+    {
+      "id": "7625",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "ed35",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "f3fa",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "c651",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "15be",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "bb70",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "27b8",
+      "name": "Телевизор",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "8664",
+      "name": "Телевизор",
+      "category": 1,
+      "price": 1,
+      "count": 20,
+      "image_url": "1"
+    },
+    {
+      "id": "b632",
+      "name": "Телевизор",
+      "category": 1,
+      "price": 1,
+      "count": 123,
+      "image_url": "123"
+    },
+    {
+      "id": "521e",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "418b",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "bd1f",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "e18b",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "217f",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "b5be",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "9557",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "70f4",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "2238",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "6e86",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "b396",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "id": "6048",
+      "name": "иг",
+      "category": "1",
+      "price": 1,
+      "count": 1,
+      "image_url": "1"
+    },
+    {
+      "name": "Телевизор",
+      "category": "1",
+      "price": 123,
+      "count": 123,
+      "image_url": "123",
+      "id": "sCOEA-H"
+    },
+    {
+      "name": "123123",
+      "category": "1",
+      "price": 123,
+      "count": 123,
+      "image_url": "123123123",
+      "id": "8KuebA0"
+    },
+    {
+      "name": "Телевизор",
+      "category": "2",
+      "price": 123,
+      "count": 123,
+      "image_url": "dsafsdf",
+      "id": "Tuosa2C"
+    },
+    {
+      "name": "Телевизор",
+      "category": "2",
+      "price": 123,
+      "count": 123123,
+      "image_url": "1313123123",
+      "id": "VwL-ySt"
+    },
+    {
+      "id": "viiVSiP",
+      "name": "Телевизор",
+      "category": 2,
+      "price": 1231231231,
+      "count": 123123,
+      "image_url": "1313123123"
+    },
+    {
+      "name": "Телевизор",
+      "category": "2",
+      "price": 123,
+      "count": 123123,
+      "image_url": "1313123123",
+      "id": "sJXQvam"
+    },
+    {
+      "name": "Телевизор",
+      "category": "2",
+      "price": 123,
+      "count": 123123,
+      "image_url": "1313123123",
+      "id": "s3VCn8v"
+    },
+    {
+      "name": "Фотоаппарат",
+      "category": "4",
+      "price": 345345,
+      "count": 35,
+      "image_url": "345345345",
+      "id": "9d_sH3x"
+    },
+    {
+      "name": "Фотоаппарат",
+      "category": "3",
+      "price": 13123,
+      "count": 123123,
+      "image_url": "1231231231",
+      "id": "3SVq6wi"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Аудиотехника и аксессуары"
+    },
+    {
+      "id": "2",
+      "name": "Планшеты и мобильные устройства"
+    },
+    {
+      "id": "3",
+      "name": "Часы и украшения"
+    },
+    {
+      "id": "4",
+      "name": "Бытовая техника"
+    },
+    {
+      "id": "5",
+      "name": "Игровые устройства и аксессуары"
+    },
+    {
+      "id": "6",
+      "name": "Кухонные аксессуары"
+    }
+  ],
+  "sessions": [
+    {
+      "hash": "0.71125116339828386990973285719519481062889099121094",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      },
+      "id": 1
+    },
+    {
+      "hash": "0.53068313106175346582915608451003208756446838378906",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      },
+      "id": 2
+    },
+    {
+      "hash": "0.67833394993115581073084285890217870473861694335938",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      },
+      "id": 3
+    },
+    {
+      "hash": "0.50816749437036645709042659291299059987068176269531",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      },
+      "id": 4
+    },
+    {
+      "hash": "0.69937878626133676007725625822786241769790649414063",
+      "user": {
+        "id": "0",
+        "login": "Admin",
+        "password": "123456",
+        "roleId": 0
+      },
+      "id": 5
+    }
+  ],
+  "orders": [
+    {
+      "user": "0",
+      "orderTime": "2025-03-08T19:49:57.063Z",
+      "totalAmount": 52997,
+      "totalQuantity": 3,
+      "id": "123"
+    },
+    {
+      "user": "0",
+      "orderTime": "2025-03-08T19:51:20.564Z",
+      "totalAmount": 119998,
+      "totalQuantity": 2,
+      "id": "Ssq1DLH"
+    },
+    {
+      "user": "0",
+      "orderTime": "2025-03-08T20:19:26.185Z",
+      "totalAmount": 2999,
+      "totalQuantity": 1,
+      "id": "rdOuIgD"
+    },
+    {
+      "user": "0",
+      "orderTime": "2025-03-10T20:24:36.737Z",
+      "totalAmount": 106987,
+      "totalQuantity": 13,
+      "id": "AAnOmj_"
+    },
+    {
+      "user": "0",
+      "orderTime": "2025-03-15T14:18:50.090Z",
+      "totalAmount": 8997,
+      "totalQuantity": 3,
+      "id": "mlGZ-Le"
+    }
+  ],
+  "orders_items": [
+    {
+      "name": "Фитнес-браслет",
+      "category": "3",
+      "price": 6999,
+      "count": 25,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "3",
+      "order_id": 1,
+      "id": "123"
+    },
+    {
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "1",
+      "order_id": 1,
+      "id": "123"
+    },
+    {
+      "name": "Планшет Samsung",
+      "category": "2",
+      "price": 42999,
+      "count": 30,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "2",
+      "order_id": 1,
+      "id": "123"
+    },
+    {
+      "name": "Ноутбук Asus",
+      "category": "2",
+      "price": 59999,
+      "count": 8,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 2,
+      "product_id": "7",
+      "order_id": "Ssq1DLH",
+      "id": "GYQC8yE"
+    },
+    {
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "1",
+      "order_id": "rdOuIgD",
+      "id": "0hX_-Tf"
+    },
+    {
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 5,
+      "product_id": "1",
+      "order_id": "AAnOmj_",
+      "id": "-4hxu4D"
+    },
+    {
+      "name": "Фитнес-браслет",
+      "category": "3",
+      "price": 6999,
+      "count": 25,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 7,
+      "product_id": "3",
+      "order_id": "AAnOmj_",
+      "id": "m7ixhXa"
+    },
+    {
+      "name": "Планшет Samsung",
+      "category": "2",
+      "price": 42999,
+      "count": 30,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 1,
+      "product_id": "2",
+      "order_id": "AAnOmj_",
+      "id": "OEefy9l"
+    },
+    {
+      "name": "Наушники Sony",
+      "category": "1",
+      "price": 2999,
+      "count": 50,
+      "image_url": "http://dummyimage.com/500",
+      "quantity": 3,
+      "product_id": "1",
+      "order_id": "mlGZ-Le",
+      "id": "S0lZcrf"
+    }
+  ]
+}
