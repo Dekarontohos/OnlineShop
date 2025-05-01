@@ -8,6 +8,7 @@ import {
 } from "../../../../constants";
 import PropTypes from "prop-types";
 import { request } from "../../../../utils/request";
+import { formatNumber } from "../../../../utils";
 
 const mainStyles = `
 		font-size: 20px;
@@ -108,7 +109,7 @@ const ProductTableRowContainer = ({
 					).name
 				}
 			</div>
-			<div className="price-column">{price}</div>
+			<div className="price-column">{formatNumber(price)}</div>
 			<div className="count-column">{count}</div>
 			<img src={image_url} alt={`image_${id}`} />
 			<div className="actions-column">

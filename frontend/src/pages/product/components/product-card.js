@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { selectProductQuantityInBasket } from "../../../Redux/selectors";
 import QuantityChanger from "../../basket/components/products-in-basket-view/product-in-basket-element/quantity-changer/quantity-changer";
+import { formatNumber } from "../../../utils";
 
 const StyledDiv = styled.div`
 	align-items: center;
@@ -80,7 +81,7 @@ export const ProductCardContainer = ({ className, product }) => {
 						<strong style={{ fontWeight: "500" }}>
 							Стоимость:{" "}
 						</strong>
-						{product.price} <br />
+						{formatNumber(product.price)} <br />
 					</label>
 				</div>
 			</div>

@@ -11,6 +11,7 @@ import {
 import { cleareBasket } from "../../../../../actions";
 import PropTypes from "prop-types";
 import { request } from "../../../../../utils/request";
+import { formatNumber } from "../../../../../utils";
 
 const StyledLabel1 = styled.div`
 	font-size: 26px;
@@ -106,7 +107,7 @@ const FunctionalPanelContainer = forwardRef(
 				<StyledLabel2>
 					{getProductDeclension(totalQuantity)}
 					&nbsp; на сумму <br />
-					{totalSum.toLocaleString("ru-RU", {})}
+					{formatNumber(totalSum)}
 					&nbsp; рублей.
 				</StyledLabel2>
 				<Button

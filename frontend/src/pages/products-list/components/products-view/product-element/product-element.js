@@ -3,11 +3,12 @@ import { Button } from "../../../../../components";
 import { useNavigate } from "react-router-dom";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../../constants";
 import PropTypes from "prop-types";
+import { formatNumber } from "../../../../../utils";
 
 const StyledDiv = styled.div`
 	display: flex;
 	justify-content: left;
-	width: 250px;
+	width: 500px;
 `;
 
 const ProductElementContainer = ({ className, id, name, price, image_url }) => {
@@ -21,7 +22,7 @@ const ProductElementContainer = ({ className, id, name, price, image_url }) => {
 				width={"150"}
 				height={"150"}
 			/>
-			<div style={{ margin: "0 0 0 10px" }}>
+			<div style={{ width: "60%" }}>
 				<StyledDiv>
 					<label
 						style={{
@@ -40,7 +41,7 @@ const ProductElementContainer = ({ className, id, name, price, image_url }) => {
 				</StyledDiv>
 				<StyledDiv>
 					<label style={{ paddingRight: "10px" }}>Стоимость: </label>
-					<label>{price}</label>
+					<label>{formatNumber(price)}</label>
 				</StyledDiv>
 			</div>
 			<Button

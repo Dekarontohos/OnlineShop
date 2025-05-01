@@ -5,6 +5,7 @@ import { deleteProductInBasket } from "../../../../../actions/delete-product-in-
 import QuantityChanger from "./quantity-changer/quantity-changer";
 import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../../constants";
 import PropTypes from "prop-types";
+import { formatNumber } from "../../../../../utils";
 
 const StyledDiv = styled.div`
 	text-align: left;
@@ -50,7 +51,7 @@ const ProductInBasketElementContainer = ({ className, product }) => {
 				</StyledDiv>
 				<StyledDiv>
 					<StyledLabel>Стоимость:</StyledLabel>
-					<label>{product.price}</label>
+					<label>{formatNumber(product.price)}</label>
 				</StyledDiv>
 			</div>
 			<Icon

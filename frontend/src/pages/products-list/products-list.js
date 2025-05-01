@@ -37,7 +37,7 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 				setProducts(productsResponse.data.products);
 				setCategories(categoriesResponse.data);
 				setLastPage(productsResponse.data.lastPage);
-				if (page > productsResponse.data.lastPage) {
+				if (page > productsResponse.data.lastPage && page !== 1) {
 					setPage(productsResponse.data.lastPage);
 				}
 			})

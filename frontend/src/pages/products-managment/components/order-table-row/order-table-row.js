@@ -1,10 +1,7 @@
 import styled from "styled-components";
-import {
-	MAIN_BACKGROUND_SECOND_COLOR_THEME,
-	TIME_ZONE_MSK,
-} from "../../../../constants";
+import { MAIN_BACKGROUND_SECOND_COLOR_THEME } from "../../../../constants";
 import PropTypes from "prop-types";
-import { getDateFromMongoose } from "../../../../utils";
+import { formatNumber, getDateFromMongoose } from "../../../../utils";
 
 const mainStyles = `
 		font-size: 20px;
@@ -26,7 +23,7 @@ const OrderTableRowContainer = ({
 		<div className={className}>
 			<div className="id-column">{id}</div>
 			<div className="user-column">{user.login}</div>
-			<div className="amount-column">{totalAmount}</div>
+			<div className="amount-column">{formatNumber(totalAmount)}</div>
 			<div className="quantity-column">{totalQuantity}</div>
 			<div className="time-column">{getDateFromMongoose(orderTime)}</div>
 		</div>

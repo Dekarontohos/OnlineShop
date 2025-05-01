@@ -82,7 +82,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 				setCategories(categoriesResponse.data);
 				setOrders(ordersResponse.data.orders);
 				setLastPage(productsResponse.data.lastPage);
-				if (page > productsResponse.data.lastPage) {
+				if (page > productsResponse.data.lastPage && page !== 1) {
 					setPage(productsResponse.data.lastPage);
 				}
 			})
@@ -333,7 +333,7 @@ const ProductsManagmentContainer = forwardRef(({ className }, ref) => {
 									</div>
 								) : (
 									<div className="no-order-found">
-										Заказаов нет
+										Заказов нет
 									</div>
 								)}
 							</div>
