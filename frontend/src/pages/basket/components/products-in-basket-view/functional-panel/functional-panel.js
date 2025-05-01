@@ -60,11 +60,6 @@ const FunctionalPanelContainer = forwardRef(
 			if (!sessionStorage.getItem("userData")) {
 				alert("Необходимо авторизоваться.");
 			}
-			console.log(
-				productsInBasket.map((product) => {
-					return { quantity: product.quantity, product: product };
-				}),
-			);
 			setLoading(true);
 			const orderData = {
 				user: userId,
@@ -74,10 +69,8 @@ const FunctionalPanelContainer = forwardRef(
 					return { quantity: product.quantity, product: product.id };
 				}),
 			};
-
 			request(`/orders`, "POST", orderData)
 				.then((result) => {
-					console.log(result);
 					setLoading(false);
 					dispatch(cleareBasket());
 					alert("Заказ создан.");

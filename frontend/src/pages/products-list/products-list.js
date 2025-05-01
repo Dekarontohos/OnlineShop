@@ -37,6 +37,9 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 				setProducts(productsResponse.data.products);
 				setCategories(categoriesResponse.data);
 				setLastPage(productsResponse.data.lastPage);
+				if (page > productsResponse.data.lastPage) {
+					setPage(productsResponse.data.lastPage);
+				}
 			})
 			.catch(() => {
 				setLoading(false);
@@ -108,16 +111,12 @@ const ProductsListContainer = forwardRef(({ className }, ref) => {
 						></ProductView>
 					</div>
 				</div>
-				{lastPage > 1 &&
-					products.length <= PAGINATIONS_LIMIT &&
-					products.length > 0 && (
-						<Pagination
-							className="pagination"
-							page={page}
-							setPage={setPage}
-							lastPage={lastPage}
-						></Pagination>
-					)}
+				<Pagination
+					className="pagination"
+					page={page}
+					setPage={setPage}
+					lastPage={lastPage}
+				></Pagination>
 			</PrivateContent>
 		</div>
 	);

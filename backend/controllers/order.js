@@ -5,7 +5,10 @@ async function getOrders(search = "", limit = 10, page = 1) {
     Order.find()
       .limit(limit)
       .skip((page - 1) * limit)
-      .sort({ createdAt: -1 }),
+      .sort({ createdAt: -1 })
+      .populate("user")
+      .populate("products.product")
+      .populate({ path: "products.product", populate: "category" }),
     Order.countDocuments(),
   ]);
 

@@ -53,6 +53,26 @@ export const TableRow = styled(TableRowContainer)`
 		width: 100px;
 		${mainStyles}
 	}
+
+	& .user-column {
+		width: 200px;
+		${mainStyles}
+	}
+
+	& .amount-column {
+		width: 150px;
+		${mainStyles}
+	}
+
+	& .quantity-column {
+		width: 150px;
+		${mainStyles}
+	}
+
+	& .time-column {
+		width: 150px;
+		${mainStyles}
+	}
 `;
 
 TableRow.propTypesropTypes = {

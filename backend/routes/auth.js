@@ -22,7 +22,7 @@ router.post(`/login`, async (req, res) => {
 
     res
       .cookie(`token`, token, { httpOnly: true })
-      .send({ error: null, user: mapUser(user) });
+      .send({ error: null, user: mapUser(user, true) });
   } catch (e) {
     res.send({ error: e.message || `Unknown error` });
   }

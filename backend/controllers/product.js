@@ -59,7 +59,7 @@ async function getProducts(
   } else if (sort === "desc") {
     sortOptions = { price: -1 };
   } else {
-    sortOptions = { id: -1 };
+    sortOptions = {};
   }
 
   const [products, count] = await Promise.all([

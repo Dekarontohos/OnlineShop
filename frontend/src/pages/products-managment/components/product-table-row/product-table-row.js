@@ -38,6 +38,8 @@ const ProductTableRowContainer = ({
 	setLastPage,
 	setPage,
 	setLoading,
+	searchPhrase,
+	sort,
 }) => {
 	const dispatch = useDispatch();
 
@@ -57,7 +59,7 @@ const ProductTableRowContainer = ({
 		request(`/products/${id}`, "DELETE")
 			.then(() => {
 				request(
-					`/products?&limit=${PAGINATIONS_LIMIT}&page=${products.length > 1 ? page : page - 1}`,
+					`/products?search=${searchPhrase}&limit=${PAGINATIONS_LIMIT}&page=${products.length > 1 ? page : page - 1}&sort=${sort}`,
 				).then((result) => {
 					setLoading(false);
 					setProducts(result.data.products);

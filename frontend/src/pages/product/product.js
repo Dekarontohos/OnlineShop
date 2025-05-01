@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loadProductAsync } from "../../actions/load-product-async";
 import { selectProduct } from "../../Redux/selectors";
-import { Error, H2 } from "../../components";
+import { Error, H2, Loader } from "../../components";
 import styled from "styled-components";
 import { ProductCard } from "./components/product-card";
 
@@ -22,7 +22,7 @@ const ProductContainer = ({ className }) => {
 	}, [dispatch, params.id]);
 
 	if (isLoading) {
-		return null;
+		return <Loader isVisible={isLoading} />;
 	}
 
 	return error ? (

@@ -1,6 +1,5 @@
 const express = require(`express`);
 const { getUser, updateUser } = require(`../controllers/user`);
-const mapUser = require(`../helpers/mapUser`);
 const mapProduct = require("../helpers/mapProduct");
 const authticated = require(`../middlewares/authenticated`);
 

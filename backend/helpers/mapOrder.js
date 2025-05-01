@@ -3,7 +3,7 @@ const mapUser = require("./mapUser");
 module.exports = function (order) {
   return {
     id: order.id,
-    user: order.user,
+    user: mapUser(order.user),
     orderTime: order.createdAt,
     totalAmount: order.totalAmount,
     totalQuantity: order.totalQuantity,
